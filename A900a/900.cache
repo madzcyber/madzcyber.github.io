@@ -1,0 +1,21 @@
+CACHE MANIFEST 
+# v2.5.5 Self-Host 
+
+../font/font1.ttf
+../font/font2.ttf
+../img/img.jpg
+alert.mjs
+cache.html
+config.mjs
+exploit.js
+exploit.mjs
+index.html
+pl_goldhenbeta.bin
+module\chain.mjs
+module\constants.mjs
+module\int64.mjs
+module\mem.mjs
+module\memtools.mjs
+module\offset.mjs
+module\rw.mjs
+module\utils.mjs
