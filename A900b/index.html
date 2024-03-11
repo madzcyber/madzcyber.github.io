@@ -79,10 +79,10 @@ padding:5px 0 1px 0;
 }
 </style>
 <meta charset="utf-8">
-<title>AUTO HOST GOLDHEN PS4 9.00 | MAGNUM HOST</title>
+<title>LITE HOST GOLDHEN PS4 9.00 | MAGNUM HOST</title>
 <script>
 if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
-function load_pocB(){
+function load_poc(){
  var req = new XMLHttpRequest();
  req.responseType = "arraybuffer";
  req.open('GET', PLfile);
@@ -106,20 +106,52 @@ function load_pocB(){
 }
 
 function jbdone() {
-all2.style.display = "none";
-all.style.display = "block";
 window.progress.innerHTML="Jailbreak Done";
-goldhen();
+all.style.display = "block";
 }
-function goldhen(){
-    progress.innerHTML="Loading ... please wait";
-    LoadedMSG="New GoldHen Loaded";
-    PLfile = "goldhen.bin";
-    out_jb = "AllPL";
-    load_pocB();
-    }
+
 function allset() {
 window.progress.innerHTML= LoadedMSG
+}
+
+function Binset() {
+window.progress.innerHTML="Payload Loaded. Send payloads to port 9020";
+alert("Payload Loaded. Send payloads to port 9020");
+}
+
+function Mset() {
+window.progress.innerHTML="Payload Loaded. Send payloads to port 9021";
+alert("Payload Loaded. Send payloads to port 9021");
+}
+
+function goldhen24(){
+    progress.innerHTML="GoldHen v2.4b16.2 loading... please wait";
+    LoadedMSG="GoldHEN V2.4b16.2 Loaded";
+    PLfile = "goldhen_2.4_b16.2_900.bin";
+    out_jb = "AllPL";
+    load_poc();
+}
+
+function Mloader(){
+    progress.innerHTML="Payload loading... please wait"; LoadedMSG="MiraLoader Loaded. Send payloads to port 9021";
+    PLfile = "MiraLoader.bin";
+    out_jb = "MLD";
+    load_poc();
+}
+
+function Bloader(){
+ progress.innerHTML="Bloader loading... please wait";
+ var payload_buffer = chain.syscall(477, 0x0, 0x300000, 0x7, 0x1000, 0xFFFFFFFF, 0);
+ var payload_loader = p.malloc32(0x1000);
+ var BLDR = payload_loader.backing;
+ BLDR[0]=0x56415741;BLDR[1]=0x83485541;BLDR[2]=0x894818EC;BLDR[3]=0xC748243C;BLDR[4]=0x10082444;BLDR[5]=0x483C2302;BLDR[6]=0x102444C7;BLDR[7]=0x00000000;BLDR[8]=0x000002BF;BLDR[9]=0x0001BE00;BLDR[10]=0xD2310000;BLDR[11]=0x00009CE8;BLDR[12]=0xC7894100;BLDR[13]=0x8D48C789;BLDR[14]=0xBA082474;BLDR[15]=0x00000010;BLDR[16]=0x000095E8;BLDR[17]=0xFF894400;BLDR[18]=0x000001BE;BLDR[19]=0x0095E800;BLDR[20]=0x89440000;BLDR[21]=0x31F631FF;BLDR[22]=0x0062E8D2;BLDR[23]=0x89410000;BLDR[24]=0x2C8B4CC6;BLDR[25]=0x45C64124;BLDR[26]=0x05EBC300;BLDR[27]=0x01499848;BLDR[28]=0xF78944C5;BLDR[29]=0xBAEE894C;BLDR[30]=0x00001000;BLDR[31]=0x000025E8;BLDR[32]=0x7FC08500;BLDR[33]=0xFF8944E7;BLDR[34]=0x000026E8;BLDR[35]=0xF7894400;BLDR[36]=0x00001EE8;BLDR[37]=0x2414FF00;BLDR[38]=0x18C48348;BLDR[39]=0x5E415D41;BLDR[40]=0x31485F41;BLDR[41]=0xC748C3C0;BLDR[42]=0x000003C0;BLDR[43]=0xCA894900;BLDR[44]=0x48C3050F;BLDR[45]=0x0006C0C7;BLDR[46]=0x89490000;BLDR[47]=0xC3050FCA;BLDR[48]=0x1EC0C748;BLDR[49]=0x49000000;BLDR[50]=0x050FCA89;BLDR[51]=0xC0C748C3;BLDR[52]=0x00000061;BLDR[53]=0x0FCA8949;BLDR[54]=0xC748C305;BLDR[55]=0x000068C0;BLDR[56]=0xCA894900;BLDR[57]=0x48C3050F;BLDR[58]=0x006AC0C7;BLDR[59]=0x89490000;BLDR[60]=0xC3050FCA;
+ chain.syscall(74, payload_loader, 0x4000, (0x1 | 0x2 | 0x4));
+ var pthread = p.malloc(0x10); {
+  chain.fcall(window.syscalls[203], payload_buffer, 0x300000);
+  chain.fcall(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_loader, payload_buffer);
+ }
+ chain.run();
+ Binset();
 }
 </script>
 <script src="./int64.js"></script>
@@ -128,13 +160,12 @@ window.progress.innerHTML= LoadedMSG
 <script type=module src="./alert.mjs"></script>
 </head>
 <body style='background-image:url("../img/img.jpg");background-position:center;background-repeat:no-repeat;background-size:cover;background-attachment:fixed;color:white;'>
-<div id=progress class=msgs>AUTO HOST GOLDHEN V2.4B16.2 PS4 9.00 A2</div>
-<br><br><br>
-<div style="text-align:center;display:none">
-<button onclick="goldhen()" onMouseOver="progress.innerHTML='GoldHen v2.4 Beta 16.2 by SISTR0'" onmouseout="progress.innerHTML='AUTO HOST GOLDHEN V2.4B16.2 PS4 9.00'">
+<div id=progress class=msgs>LITE HOST AUTO EXPLOIT GOLDHEN V2.4B16.2 9.00</div>
+<br><br><br><br><br><br><br>
+<div id=all style="text-align:center;display:yes">
+<button onclick="goldhen24()" onMouseOver="progress.innerHTML='GoldHen v2.4b16.2 by SiSTRo'" onmouseout="progress.innerHTML='Lite Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
 <div class=butIMG><img src="../img/newgoldhen.png"></div><div class=butTXT>New GoldHen</div></button>
 </div>
 <div id=bottommsg class="msgs bottopmsg">© Magnum Game Gorontalo&nbsp;&nbsp;-&nbsp;&nbsp;Thanks to All Dev PlayStation Jailbreak</div>
 </body>
-
 </html>
