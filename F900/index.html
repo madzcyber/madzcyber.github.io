@@ -81,40 +81,11 @@ padding:5px 0 1px 0;
 <meta charset="utf-8">
 <title>Full Host GoldHen PS4 9.00 | Avatar Host</title>
 <script>
-if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
-  function loadFile(fileName) {
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET", fileName, false);
-    xhr.overrideMimeType("text/plain; charset=x-user-defined");
-    xhr.send();
-    let array = Uint8Array.from(xhr.response, c => c.charCodeAt(0));
-    if (fileName.endsWith(".bz2")) {
-      try {
-        PLS = bzip2.simple(bzip2.array(array));
-      } catch(error) {
-        alert(fileName + ": \"" + error + "\"\n");
-        throw error;
-      }
-    }
-    return array;
-  }
-  
-function load_pocj() {
-var payload_buffer = chain.syscall(477, 0, 0x300000, 7, 0x1002, -1, 0);
-            var buf = new Uint8Array(1);
-            var buf_addr = p.leakval(buf);
-            var old_buf = p.read8(buf_addr.add32(16));
-            var old_sz = p.read4(buf_addr.add32(24));
-            p.write8(buf_addr.add32(16), payload_buffer);
-            p.write4(buf_addr.add32(24), PLS.length);
-            for(var i = 0; i < PLS.length; i++) buf[i] = PLS[i];
-            p.write8(buf_addr.add32(16), old_buf);
-            p.write4(buf_addr.add32(24), old_sz);
-            var pthread = p.malloc(0x10);
-            chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
-            allset();
-}
-
+window.applicationCache.ondownloading=function(){document.getElementById("progress").innerHTML="Page Caching Started!!";};
+window.applicationCache.onprogress=function(a){document.getElementById("progress").innerHTML=(Math.round(100*(a.loaded/a.total)))+"%";};
+window.applicationCache.oncached=function(){document.getElementById("progress").innerHTML="Page Cached Successfully!!";setTimeout(function(){document.getElementById("progress").innerHTML="Reopen the Page !!"; }, 1500);};
+</script>
+<script>
 function white() {
 document.getElementById("progress").style.color = "white";
 }
@@ -123,25 +94,17 @@ document.getElementById("progress").style.color = "green";
 }
 
 function jbdone() {
+sessionStorage.Exploit="yes";
 document.getElementById("progress").style.color = "green";
 window.progress.innerHTML="Jailbreak Done";
-localStorage.setItem('fanthreshold', tempC.value);
-for(var i=50; i<=80; i=i+5){
-    var select = document.getElementById("tempC");
-    var option = document.createElement("OPTION");
-	select.options.add(option);
-	option.text = i;
-	option.value = i;
-}
-tempC.value=60;
-all.style.display = "block";
+setTimeout(white, 200);
+setTimeout(green, 300);
 setTimeout(white, 500);
-setTimeout(green, 800);
-setTimeout(white, 1100);
-setTimeout(green, 1500);
-setTimeout(white, 2000);
-setTimeout(green, 2500);
-setTimeout(white, 3000);
+load_pl();
+}
+
+function load_pl() {
+if(out_jb=="AllPL"){setTimeout(load_pocj, 500);} else  if(out_jb=="AllBin"){setTimeout(load_pocB, 500);} else if(sessionStorage.Payload!="yes"){setTimeout(load_poc2, 500);} else {setTimeout(load_pocB, 1000);}
 }
 
 function allset() {
@@ -221,92 +184,135 @@ function load_pocB(){
  };
 }
 
+  function loadFile(fileName) {
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", fileName, false);
+    xhr.overrideMimeType("text/plain; charset=x-user-defined");
+    xhr.send();
+    let array = Uint8Array.from(xhr.response, c => c.charCodeAt(0));
+    if (fileName.endsWith(".bz2")) {
+      try {
+        PLS = bzip2.simple(bzip2.array(array));
+      } catch(error) {
+        alert(fileName + ": \"" + error + "\"\n");
+        throw error;
+      }
+    }
+    return array;
+  }
+  
+function load_pocj() {
+var payload_buffer2 = chain.syscall(477, 0, 0x300000, 7, 0x1002, -1, 0);
+            var buf = new Uint8Array(1);
+            var buf_addr = p.leakval(buf);
+            var old_buf = p.read8(buf_addr.add32(16));
+            var old_sz = p.read4(buf_addr.add32(24));
+            p.write8(buf_addr.add32(16), payload_buffer2);
+            p.write4(buf_addr.add32(24), PLS.length);
+            for(var i = 0; i < PLS.length; i++) buf[i] = PLS[i];
+            p.write8(buf_addr.add32(16), old_buf);
+            p.write4(buf_addr.add32(24), old_sz);
+            var pthread2 = p.malloc(0x10);
+            chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread2, 0x0, payload_buffer2, 0);
+            allset();
+}
+
 function Linux1N(){
 progress.innerHTML="LinuxLoader 1GB loading... please wait";
 LoadedMSG="LinuxLoader Loaded";
 PLfile = "payload-900-1gb.bin";
+out_jb = "Linux";
 var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
-if(sessionStorage.Payload!="yes"){setTimeout(load_poc2, 500);} else {load_pocB();}
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
 }
 
 function Linux2N(){
 progress.innerHTML="LinuxLoader 2GB loading... please wait";
 LoadedMSG="LinuxLoader Loaded";
 PLfile = "payload-900-2gb.bin";
+out_jb = "Linux";
 var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
-if(sessionStorage.Payload!="yes"){setTimeout(load_poc2, 500);} else {load_pocB();}
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
 }
 
 function Linux3N(){
 progress.innerHTML="LinuxLoader 3GB loading... please wait";
 LoadedMSG="LinuxLoader Loaded";
 PLfile = "payload-900-3gb.bin";
+out_jb = "Linux";
 var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
-if(sessionStorage.Payload!="yes"){setTimeout(load_poc2, 500);} else {load_pocB();}
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
 }
 
 function Linux4N(){
 progress.innerHTML="LinuxLoader 4GB loading... please wait";
 LoadedMSG="LinuxLoader Loaded";
 PLfile = "payload-900-4gb.bin";
+out_jb = "Linux";
 var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
-if(sessionStorage.Payload!="yes"){setTimeout(load_poc2, 500);} else {load_pocB();}
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
 }
 
 function Linux5N(){
 progress.innerHTML="LinuxLoader 5GB loading... please wait";
 LoadedMSG="LinuxLoader Loaded";
 PLfile = "payload-900-5gb.bin";
+out_jb = "Linux";
 var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
-if(sessionStorage.Payload!="yes"){setTimeout(load_poc2, 500);} else {load_pocB();}
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
 }
 
 function Linux1(){
 progress.innerHTML="LinuxLoader 1GB loading... please wait";
 LoadedMSG="LinuxLoader Loaded";
 PLfile = "LinuxLoader.bin";
+out_jb = "Linux";
 var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
-if(sessionStorage.Payload!="yes"){setTimeout(load_poc2, 500);} else {load_pocB();}
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
 }
 
 function Linux2(){
 progress.innerHTML="LinuxLoader 2GB loading... please wait";
 LoadedMSG="LinuxLoader Loaded";
 PLfile = "LinuxLoader2gb.bin";
+out_jb = "Linux";
 var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
-if(sessionStorage.Payload!="yes"){setTimeout(load_poc2, 500);} else {load_pocB();}
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
 }
 
 function Linux3(){
 progress.innerHTML="LinuxLoader 3GB loading... please wait";
 LoadedMSG="LinuxLoader Loaded";
 PLfile = "LinuxLoader3gb.bin";
+out_jb = "Linux";
 var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
-if(sessionStorage.Payload!="yes"){setTimeout(load_poc2, 500);} else {load_pocB();}
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
 }
 
 function Linux4(){
 progress.innerHTML="LinuxLoader 4GB loading... please wait";
 LoadedMSG="LinuxLoader Loaded";
 PLfile = "LinuxLoader4gb.bin";
+out_jb = "Linux";
 var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
-if(sessionStorage.Payload!="yes"){setTimeout(load_poc2, 500);} else {load_pocB();}
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
 }
 
 function Linux5(){
 progress.innerHTML="LinuxLoader 5GB loading... please wait";
 LoadedMSG="LinuxLoader Loaded";
 PLfile = "LinuxLoader5gb.bin";
+out_jb = "Linux";
 var script = document.createElement('script');script.src = "MiraLoader.js";document.getElementsByTagName('head')[0].appendChild(script);
-if(sessionStorage.Payload!="yes"){setTimeout(load_poc2, 500);} else {load_pocB();}
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 500);} else {setTimeout(load_pocB, 1000);}
 }
 
 function Linux6(){
 progress.innerHTML="Whos That Southbridge loading... please wait";
 LoadedMSG="Whos That Southbridge Loaded";
-out_jb = "AllPL";
+out_jb = "AllBin";
 PLfile = "wtsb.bin";
-load_pocB();
+if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocB, 1000);}
 }
 
 function Mira(){
@@ -328,257 +334,264 @@ function goldhen2(){
     progress.innerHTML="Goldhen 2.0b2 loading... please wait";
     LoadedMSG="GoldHEN 2.0b2 Loaded";
     PLfile = "goldhen2b2.bin";
-    out_jb = "AllPL";
-    load_pocB();
+    out_jb = "AllBin";
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocB, 1000);}
 }
 
 function goldhen222(){
     progress.innerHTML="Goldhen 2.2.2 loading... please wait";
     LoadedMSG="GoldHEN 2.2.2 Loaded";
     PLfile = "goldhen_2.2.2_900.bin";
-    out_jb = "AllPL";
-    load_pocB();
+    out_jb = "AllBin";
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocB, 1000);}
 }
 
 function goldhen224(){
     progress.innerHTML="Goldhen 2.2.4 loading... please wait";
     LoadedMSG="GoldHEN 2.2.4 Loaded";
     PLfile = "goldhen_2.2.4_900.bin";
-    out_jb = "AllPL";
-    load_pocB();
+    out_jb = "AllBin";
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocB, 1000);}
 }
 
 function goldhen23(){
     progress.innerHTML="Goldhen 2.3 loading... please wait";
     LoadedMSG="GoldHEN 2.3 Loaded";
     PLfile = "goldhen_2.3_900.bin";
-    out_jb = "AllPL";
-    load_pocB();
+    out_jb = "AllBin";
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocB, 1000);}
 }
 function goldhen24(){
     progress.innerHTML="Goldhen 2.4 Beta 16 2 loading... please wait";
     LoadedMSG="GoldHEN 2.4 Beta 16 2 Loaded";
     PLfile = "goldhen_2.4_b16_900.bin";
-    out_jb = "AllPL";
-    load_pocB();
+    out_jb = "AllBin";
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocB, 1000);}
+}
+function goldhen212(){
+    progress.innerHTML="Goldhen 2.1.2 loading... please wait";
+    LoadedMSG="GoldHEN 2.1.2 Loaded";
+    PLfile = "goldhen_212_900.bin";
+    out_jb = "AllBin";
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocB, 1000);}
 }
 
 function load_PS4Debug(){
     progress.innerHTML="PS4Debug loading... please wait"; LoadedMSG="PS4Debug Loaded";
     setTimeout(function(){ let array = loadFile('ps4debug.bin.bz2');}, 50);
     out_jb = "AllPL";
-    setTimeout(load_pocj, 500);
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_permanentuart(){
     progress.innerHTML="permanentuart loading... please wait"; LoadedMSG="permanentuart Loaded";
     setTimeout(function(){ let array = loadFile('permanentuart.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_App2USB(){
     progress.innerHTML="app2usb loading... please wait"; LoadedMSG="app2usb Loaded";
     setTimeout(function(){ let array = loadFile('app2usb.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_BackupDB(){
     progress.innerHTML="backupdb loading... please wait"; LoadedMSG="backupdb Loaded";
     setTimeout(function(){ let array = loadFile('backupdb.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_pkgb(){
     progress.innerHTML="PKG Backup loading... please wait"; LoadedMSG="PKG Backup Loaded";
     setTimeout(function(){ let array = loadFile('pkg-backup.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_DumperG(){
     progress.innerHTML="Dumper Game loading... please wait"; LoadedMSG="Dumper Game Loaded";
     setTimeout(function(){ let array = loadFile('DumperG.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_DumperU(){
     progress.innerHTML="Dumper Game Update loading... please wait"; LoadedMSG="Dumper Game Update Loaded";
     setTimeout(function(){ let array = loadFile('DumperU.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_DumperMGU(){
     progress.innerHTML="Dumper Merged Games and Update loading... please wait"; LoadedMSG="Dumper Merged Games and Update Loaded";
     setTimeout(function(){ let array = loadFile('DumperMGU.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_DumperSGU(){
     progress.innerHTML="Dumper Seperate Games and Update loading... please wait"; LoadedMSG="Dumper Seperate Games and Update Loaded";
     setTimeout(function(){ let array = loadFile('DumperSGU.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_KernelDumper(){
     progress.innerHTML="kerneldumper loading... please wait"; LoadedMSG="kerneldumper Loaded";
     setTimeout(function(){ let array = loadFile('kerneldumper.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_ModuleDumper(){
     progress.innerHTML="ModuleDumper loading... please wait"; LoadedMSG="ModuleDumper Loaded";
     setTimeout(function(){ let array = loadFile('mdumper.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_RestoreDB(){
     progress.innerHTML="RestoreDB loading... please wait"; LoadedMSG="RestoreDB Loaded";
     setTimeout(function(){ let array = loadFile('restoredb.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_DisableASLR(){
     progress.innerHTML="DisableASLR loading... please wait"; LoadedMSG="DisableASLR Loaded";
     setTimeout(function(){ let array = loadFile('disableaslr.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_DisableUpdates(){
     progress.innerHTML="DisableUpdates loading... please wait"; LoadedMSG="DisableUpdates Loaded";
     setTimeout(function(){ let array = loadFile('disableupdates.bin.bz2');}, 50);
     out_jb = "AllPL";
-    setTimeout(load_pocj, 500);
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_EnableUpdates(){
     progress.innerHTML="EnableUpdates loading... please wait"; LoadedMSG="EnableUpdates Loaded";
     setTimeout(function(){ let array = loadFile('enableupdates.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_EnableBrowser(){
     progress.innerHTML="EnableBrowser loading... please wait"; LoadedMSG="EnableBrowser Loaded";
     setTimeout(function(){ let array = loadFile('enablebrowser.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_ExitIDU(){
     progress.innerHTML="ExitIDU loading... please wait"; LoadedMSG="ExitIDU Loaded";
     setTimeout(function(){ let array = loadFile('exitidu.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
   
 function load_FTP(){
     progress.innerHTML="FTP loading... please wait"; LoadedMSG="FTP Loaded";
     setTimeout(function(){ let array = loadFile('ftp.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
   
 function load_HistoryBlocker(){
     progress.innerHTML="HistoryBlocker loading... please wait"; LoadedMSG="HistoryBlocker Loaded";
     setTimeout(function(){ let array = loadFile('historyblocker.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
   
 function load_RIFRenamer(){
     progress.innerHTML="RIFRenamer loading... please wait"; LoadedMSG="RIFRenamer Loaded";
     setTimeout(function(){ let array = loadFile('rifrenamer.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
   
 function load_Orbis(){
     progress.innerHTML="Orbis-Toolbox loading... please wait"; LoadedMSG="Orbis-Toolbox Loaded";
     setTimeout(function(){ let array = loadFile('Orbis-Toolbox-900.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_GTAAr0(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('gtava0.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_GTAAr1(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('gtava1.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_GTAAr2(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('gtava2.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_GTAAr3(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('gtava3.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_GTAL(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('Lamance9.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_expul(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('LushModz-1.0-9.00.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_expul2(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('LushModz-4.0-9.00.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_GTABQ(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('BeefQueefMod.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_GTABQ2(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('BeefQueefMod134.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_GTABQ3(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('BeefQueefMod138.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_GTAVMB(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('gtavmb127.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_GTAVLTS(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('gtavLTS127.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_Wilde32(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('WildeModz-1.32.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_Wilde33(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('WildeModz-1.33.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_Wilde38(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('WildeModz-1.38.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_Wilde46(){
@@ -596,64 +609,64 @@ function load_Wilde47(){
 function load_Oysters100(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('Oysters1.00.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_Oysters113(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('Oysters1.13.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_Oysters119(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('Oysters1.19.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_Oysters124(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('Oysters1.24.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_Oysters129(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('Oysters1.29.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 
 function load_ToDexE(){
     progress.innerHTML="ToDEX Enabling... please wait"; LoadedMSG="ToDex Enabled";
     setTimeout(function(){ let array = loadFile('todex-enable.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_ToDexD(){
     progress.innerHTML="ToDEX Disabling... please wait"; LoadedMSG="ToDex Disabled";
     setTimeout(function(){ let array = loadFile('todex-disable.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_WebRTE(){
     progress.innerHTML="WebRTE loading... please wait"; LoadedMSG="WebRTE Loaded";
     setTimeout(function(){ let array = loadFile('WebRTE.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function load_fan(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     let array = loadFile("fan" +tempC.value+ ".bin.bz2");
     out_jb = "AllPL";
-    setTimeout(load_pocj, 500);
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function Mloader(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="MiraLoader Loaded. Send payloads to port 9021";
     setTimeout(function(){ let array = loadFile('MiraLoader.bin.bz2');}, 50);
     out_jb = "AllPL";
-    setTimeout(load_pocj, 500);
+    if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function Bloader(){
@@ -674,7 +687,7 @@ function Bloader(){
 function load_copych(){
     progress.innerHTML="Payload loading... please wait"; LoadedMSG="Payload Loaded";
     setTimeout(function(){ let array = loadFile('CopyCH.bin.bz2');}, 50);
-    out_jb = "AllPL";     setTimeout(load_pocj, 500);
+    out_jb = "AllPL";     if(sessionStorage.Exploit!="yes"){setTimeout(webexp, 50);} else {setTimeout(load_pocj, 1000);}
 }
 
 function gtamods(){
@@ -705,17 +718,21 @@ Linuxs.style.display = "none";
 Dumpers.style.display = "none";
 Tools.style.display = "none";
 		}
+function webexp() 
+        {
+            import('./exploit.mjs');
+        }
 </script>
 <script src="./int64.js"></script>
 <script src="./rop.js"></script>
 <script src="./kexploit.js"></script>
-<script type=module src="./alert.mjs"></script>
+<script type=module src="./alert.js"></script>
 </head>
 <body style='background-color:#000;color:white;'>
 <div class=msgs>Full Host Auto Exploit GoldHen v2.4b16.2 9.00</div>
 <h1 id=progress style='font-family:font2;font-size:28px;text-align:center;color:white;'>Status</h1>
 <br>
-<div id=all style="text-align:center;display:none">
+<div id=all style="text-align:center;">
 <button onclick="goldhen224()" onMouseOver="progress.innerHTML='GoldHen v2.2.4 by SISTR0'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/hen.png"></div><div class=butTXT>GoldHen v2.2.4</div></button>
 <button onclick="goldhen23()" onMouseOver="progress.innerHTML='GoldHen v2.3 by SISTR0'" onmouseout="progress.innerHTML='Status'">
@@ -825,7 +842,7 @@ Tools.style.display = "none";
 <br>
 <button onclick="load_GTAAr0()" onMouseOver="progress.innerHTML='GTAV ArabicGuy 1.00 L1+R1'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.00</div></button>
-<button onclick="load_GTAAr1()" onMouseOver="progress.innerHTML='GTAV ArabicGuy 1.27 by rfoodxmodz ==> + []'" onmouseout="progress.innerHTML='Status'">
+<button onclick="load_GTAAr1()" onMouseOver="progress.innerHTML='GTAV ArabicGuy 1.27 by rfoodxmodz Right + Square'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.27</div></button>
 <button onclick="load_Wilde32()" onMouseOver="progress.innerHTML='GTAV Expulsion Mod Menu 1.32 v1.1 by x_WildeModz_x'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.32</div></button>
@@ -863,6 +880,16 @@ Tools.style.display = "none";
 </div>
 <div id=bottommsg class="msgs bottopmsg">Avatar Gamez&nbsp;&nbsp;-&nbsp;&nbsp;Gorontalo</div>
 <script>
+localStorage.setItem('fanthreshold', tempC.value);
+for(var i=50; i<=80; i=i+5){
+    var select = document.getElementById("tempC");
+    var option = document.createElement("OPTION");
+	select.options.add(option);
+	option.text = i;
+	option.value = i;
+}
+tempC.value=60;
+
 var bzip2 = {};
 
 bzip2.array = function(bytes) {
