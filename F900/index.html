@@ -26,7 +26,7 @@ font-family:font2;
 width:388px;
 margin:5px 3px 5px 3px;
 padding:0px;
-border:2px solid black;
+border:3px solid white;
 border-radius:5px;
 text-align:left;
 text-shadow: 4px 4px 4px black;
@@ -36,12 +36,12 @@ background:rgba(0,0,0,0.5);
 }
 button:hover{
 cursor:pointer;
-background:linear-gradient(180deg,rgba(74,91,134,1)0%,rgba(14,34,87,1)35%);
+background-color:#212F3D;
 }
 .butIMG{
 display:inline-block;
 margin:-0px;
-border-right:3px solid black;
+border-right:3px solid white;
 outline:none;
 cursor:pointer;
 }
@@ -62,24 +62,24 @@ cursor:pointer;
 .msgs{
 font-family:font1;
 height:50px;
-font-size:40px;
+font-size:60px;
 margin-top:1%;
 padding:5px 0 5px 0;
 }
 .bottopmsg{
-font-family:font2;
+font-family:font1;
 text-align:center;
 display:block;
 position:fixed;
 bottom:15px;
 width:100%;
 height:43px;
-font-size:28px;
+font-size:40px;
 padding:5px 0 1px 0;
 }
 </style>
 <meta charset="utf-8">
-<title>FULL HOST GOLDHEN PS4 9.00 | MAGNUM HOST</title>
+<title>Full Host GoldHen PS4 9.00 | Avatar Host</title>
 <script>
 if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
   function loadFile(fileName) {
@@ -711,156 +711,157 @@ Tools.style.display = "none";
 <script src="./kexploit.js"></script>
 <script type=module src="./alert.mjs"></script>
 </head>
-<body style='background-image:url("../img/img.jpg");background-position:center;background-repeat:no-repeat;background-size:cover;background-attachment:fixed;color:white;'>
-<div id=progress class=msgs>Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00</div>
-<br><br><br>
+<body style='background-color:#000;color:white;'>
+<div class=msgs>Full Host Auto Exploit GoldHen v2.4b16.2 9.00</div>
+<h1 id=progress style='font-family:font2;font-size:28px;text-align:center;color:white;'>Status</h1>
+<br>
 <div id=all style="text-align:center;display:none">
-<button onclick="goldhen224()" onMouseOver="progress.innerHTML='GoldHen v2.2.4 by SISTR0'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="goldhen224()" onMouseOver="progress.innerHTML='GoldHen v2.2.4 by SISTR0'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/hen.png"></div><div class=butTXT>GoldHen v2.2.4</div></button>
-<button onclick="goldhen23()" onMouseOver="progress.innerHTML='GoldHen v2.3 by SISTR0'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="goldhen23()" onMouseOver="progress.innerHTML='GoldHen v2.3 by SISTR0'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/hen.png"></div><div class=butTXT>GoldHen v2.3</div></button>
-<button onclick="goldhen24()" onMouseOver="progress.innerHTML='GoldHen v2.4 Beta 16.2 by SISTR0'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="goldhen24()" onMouseOver="progress.innerHTML='GoldHen v2.4 Beta 16.2 by SISTR0'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/newgoldhen.png"></div><div class=butTXT>New GoldHen</div></button>
 <br>
-<button onclick="load_WebRTE()" onMouseOver="progress.innerHTML='WebRTE'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_WebRTE()" onMouseOver="progress.innerHTML='WebRTE'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/WebRTE.png"></div><div class=butTXT>WebRTE</div></button>
-<button onclick="load_PS4Debug()" onMouseOver="progress.innerHTML='ps4debug'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_PS4Debug()" onMouseOver="progress.innerHTML='ps4debug'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/ps4debug.png"></div><div class=butTXT>PS4 Debug</div></button>
-<button onclick="load_Orbis()" onMouseOver="progress.innerHTML='Orbis Toolbox Loader Alfa 1190'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_Orbis()" onMouseOver="progress.innerHTML='Orbis Toolbox Loader Alfa 1190'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/OrbisToolbox.png"></div><div class=butTXT>Orbis Toolbox</div></button>
 <br>
-<button onclick="alltools()" onMouseOver="progress.innerHTML='All Tools payloads'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="alltools()" onMouseOver="progress.innerHTML='All Tools payloads'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/tools.png"></div><div class=butTXT>Tools Group</div></button>
-<button onclick="alldumpers()" onMouseOver="progress.innerHTML='All Dumper payloads'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="alldumpers()" onMouseOver="progress.innerHTML='All Dumper payloads'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/dumper.png"></div><div class=butTXT>Dump Group</div></button>
-<button onclick="alllinux()" onMouseOver="progress.innerHTML='All Linux payloads'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="alllinux()" onMouseOver="progress.innerHTML='All Linux payloads'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/linux.png"></div><div class=butTXT>Linux Group</div></button>
 <br>
-<button onclick="gtamods()" onMouseOver="progress.innerHTML='All Mods GTAV & RDR2 payloads'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="gtamods()" onMouseOver="progress.innerHTML='All Mods GTAV & RDR2 payloads'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V Modz</div></button>
-<button onclick="load_copych()" onMouseOver="progress.innerHTML='Copy json and shn files from USB to PS4'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_copych()" onMouseOver="progress.innerHTML='Copy json and shn files from USB to PS4'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/ps4trainer.png"></div><div class=butTXT>Cheat Copy</div></button>
-<button onclick="rdrmods()" onMouseOver="progress.innerHTML='All Mods GTAV & RDR2 payloads'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="rdrmods()" onMouseOver="progress.innerHTML='All Mods GTAV & RDR2 payloads'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/rdr2.png"></div><div class=butTXT>RDR 2 Modz</div></button>
 </div>
 
 <div id=Tools style="text-align:center;display:none">
-<button onclick="backall()" onMouseOver="progress.innerHTML='Back to Base Menu'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="backall()" onMouseOver="progress.innerHTML='Back to Base Menu'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/back.png"></div><div class=butTXT>Return to Menu</div></button>
 <br>
-<button onclick="load_BackupDB()" onMouseOver="progress.innerHTML='Create a backup of important database files ans User Data'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_BackupDB()" onMouseOver="progress.innerHTML='Create a backup of important database files ans User Data'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/backup.png"></div><div class=butTXT>DB Backup</div></button>
-<button onclick="load_RestoreDB()" onMouseOver="progress.innerHTML='Restore a backup of the database files and User Data'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_RestoreDB()" onMouseOver="progress.innerHTML='Restore a backup of the database files and User Data'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/restore.png"></div><div class=butTXT>DB Restore</div></button>
-<button onclick="load_ExitIDU()" onMouseOver="progress.innerHTML='Disable IDU Mode'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_ExitIDU()" onMouseOver="progress.innerHTML='Disable IDU Mode'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/avatar.png"></div><div class=butTXT>Exit IDU</div></button>
 <br>
-<button onclick="load_RIFRenamer()" onMouseOver="progress.innerHTML='Rif Renamer'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_RIFRenamer()" onMouseOver="progress.innerHTML='Rif Renamer'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/rifrenamer.png"></div><div class=butTXT>Rif Renamer</div></button>
-<button onclick="load_FTP()" onMouseOver="progress.innerHTML='A full access FTP server for the PS4'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_FTP()" onMouseOver="progress.innerHTML='A full access FTP server for the PS4'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/ftp.png"></div><div class=butTXT>FTP</div></button>
-<button onclick="load_HistoryBlocker()" onMouseOver="progress.innerHTML='Disable the auto opening of the last page used in the PS4 WebBrowser'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_HistoryBlocker()" onMouseOver="progress.innerHTML='Disable the auto opening of the last page used in the PS4 WebBrowser'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/historyBlocker.png"></div><div class=butTXT>History Blocker</div></button>
 <br>
-<button onclick="load_App2USB()" onMouseOver="progress.innerHTML='Move installed games to an external USB drive'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_App2USB()" onMouseOver="progress.innerHTML='Move installed games to an external USB drive'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/app2usb.png"></div><div class=butTXT>App2USB</div></button>
-<button onclick="Bloader()" onMouseOver="progress.innerHTML='Binloader Port 9020'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="Bloader()" onMouseOver="progress.innerHTML='Binloader Port 9020'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/binloader.png"></div><div class=butTXT>BinLoader</div></button>
-<button onclick="load_EnableUpdates()" onMouseOver="progress.innerHTML='Removes the dummy files in the PS4 update folder'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_EnableUpdates()" onMouseOver="progress.innerHTML='Removes the dummy files in the PS4 update folder'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/enableupdates.png"></div><div class=butTXT>Enable Updates</div></button>
 <br>
-<button onclick="load_ToDexE()" onMouseOver="progress.innerHTML='unlocks some debug features available on testkit'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_ToDexE()" onMouseOver="progress.innerHTML='unlocks some debug features available on testkit'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/DEXenable.png"></div><div class=butTXT>Enable ToDex</div></button>
-<button onclick="load_ToDexD()" onMouseOver="progress.innerHTML='Disable ToDEX'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_ToDexD()" onMouseOver="progress.innerHTML='Disable ToDEX'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/DEXdisable.png"></div><div class=butTXT>Disable ToDex</div></button>
-<button onclick="load_DisableUpdates()" onMouseOver="progress.innerHTML='Creates dummy files in the PS4 update folder'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_DisableUpdates()" onMouseOver="progress.innerHTML='Creates dummy files in the PS4 update folder'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/disableupdates.png"></div><div class=butTXT>Disable Updates</div></button>
 </div>
 
 <div id=Dumpers style="text-align:center;display:none">
-<button onclick="backall()" onMouseOver="progress.innerHTML='Back to Base Menu'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="backall()" onMouseOver="progress.innerHTML='Back to Base Menu'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/back.png"></div><div class=butTXT>Return to Menu</div></button>
 <br>
-<button onclick="load_pkgb()" onMouseOver="progress.innerHTML='PS4 PKG Backup by Kameleon'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_pkgb()" onMouseOver="progress.innerHTML='PS4 PKG Backup by Kameleon'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/hdd.png"></div><div class=butTXT>PKG Backup</div></button>
-<button onclick="load_DumperG()" onMouseOver="progress.innerHTML='Dump Games only to a USB drive by Leeful'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_DumperG()" onMouseOver="progress.innerHTML='Dump Games only to a USB drive by Leeful'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/dumper.png"></div><div class=butTXT>Dumper Game</div></button>
-<button onclick="load_DumperU()" onMouseOver="progress.innerHTML='Dump Games Update only to a USB drive by Leeful'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_DumperU()" onMouseOver="progress.innerHTML='Dump Games Update only to a USB drive by Leeful'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/dumper.png"></div><div class=butTXT>Dumper Update</div></button>
 <br>
-<button onclick="load_DumperMGU()" onMouseOver="progress.innerHTML='Dump Merged Games and Update to a USB drive by Leeful'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_DumperMGU()" onMouseOver="progress.innerHTML='Dump Merged Games and Update to a USB drive by Leeful'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/dumper.png"></div><div class=butTXT>Dumper MGU</div></button>
-<button onclick="load_DumperSGU()" onMouseOver="progress.innerHTML='Dump Seperate Games and Update to a USB drive by Leeful'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_DumperSGU()" onMouseOver="progress.innerHTML='Dump Seperate Games and Update to a USB drive by Leeful'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/dumper.png"></div><div class=butTXT>Dumper SGU</div></button>
-<button onclick="load_KernelDumper()" onMouseOver="progress.innerHTML='kernel dumper'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_KernelDumper()" onMouseOver="progress.innerHTML='kernel dumper'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/kernelDumper.png"></div><div class=butTXT>Kernel Dumper</div></button>
 <br>
-<button onclick="load_ModuleDumper()" onMouseOver="progress.innerHTML='module dumper'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_ModuleDumper()" onMouseOver="progress.innerHTML='module dumper'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/moduledumper.png"></div><div class=butTXT>Module Dumper</div></button>
 </div>
 
 <div id=Linuxs style="text-align:center;display:none">
-<button onclick="backall()" onMouseOver="progress.innerHTML='Back to Base Menu'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="backall()" onMouseOver="progress.innerHTML='Back to Base Menu'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/back.png"></div><div class=butTXT>Return to Menu</div></button>
 <br>
-<button onclick="Linux1N()" onMouseOver="progress.innerHTML='LinuxLoader 1gb by PSXITA'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="Linux1N()" onMouseOver="progress.innerHTML='LinuxLoader 1gb by PSXITA'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/linux.png"></div><div class=butTXT>Linux PSXITA 1GB</div></button>
-<button onclick="Linux2N()" onMouseOver="progress.innerHTML='LinuxLoader 2gb by PSXITA'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="Linux2N()" onMouseOver="progress.innerHTML='LinuxLoader 2gb by PSXITA'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/linux.png"></div><div class=butTXT>Linux PSXITA 2GB</div></button>
-<button onclick="Linux3N()" onMouseOver="progress.innerHTML='LinuxLoader 3gb by PSXITA'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="Linux3N()" onMouseOver="progress.innerHTML='LinuxLoader 3gb by PSXITA'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/linux.png"></div><div class=butTXT>Linux PSXITA 3GB</div></button>
 <br>
-<button onclick="Linux4N()" onMouseOver="progress.innerHTML='LinuxLoader 4gb by PSXITA'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="Linux4N()" onMouseOver="progress.innerHTML='LinuxLoader 4gb by PSXITA'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/linux.png"></div><div class=butTXT>Linux PSXITA 4GB</div></button>
-<button onclick="Linux5N()" onMouseOver="progress.innerHTML='LinuxLoader 5gb by PSXITA'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="Linux5N()" onMouseOver="progress.innerHTML='LinuxLoader 5gb by PSXITA'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/linux.png"></div><div class=butTXT>Linux PSXITA 5GB</div></button>
-<button onclick="Linux6()" onMouseOver="progress.innerHTML='Whos That Southbridge'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="Linux6()" onMouseOver="progress.innerHTML='Whos That Southbridge'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/linux.png"></div><div class=butTXT>W.T Southbridge</div></button>
 </div>
 
 <div id=gta style="text-align:center;display:none">
-<button onclick="backall()" onMouseOver="progress.innerHTML='Back to Base Menu'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="backall()" onMouseOver="progress.innerHTML='Back to Base Menu'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/back.png"></div><div class=butTXT>Return to Menu</div></button>
 <br>
-<button onclick="load_GTAAr0()" onMouseOver="progress.innerHTML='GTAV ArabicGuy 1.00 L1+R1'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_GTAAr0()" onMouseOver="progress.innerHTML='GTAV ArabicGuy 1.00 L1+R1'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.00</div></button>
-<button onclick="load_GTAAr1()" onMouseOver="progress.innerHTML='GTAV ArabicGuy 1.27 by rfoodxmodz ==> + []'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_GTAAr1()" onMouseOver="progress.innerHTML='GTAV ArabicGuy 1.27 by rfoodxmodz ==> + []'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.27</div></button>
-<button onclick="load_Wilde32()" onMouseOver="progress.innerHTML='GTAV Expulsion Mod Menu 1.32 v1.1 by x_WildeModz_x'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_Wilde32()" onMouseOver="progress.innerHTML='GTAV Expulsion Mod Menu 1.32 v1.1 by x_WildeModz_x'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.32</div></button>
 <br>
-<button onclick="load_Wilde33()" onMouseOver="progress.innerHTML='GTAV Expulsion Mod Menu 1.33 v1.1 by x_WildeModz_x'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_Wilde33()" onMouseOver="progress.innerHTML='GTAV Expulsion Mod Menu 1.33 v1.1 by x_WildeModz_x'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.33</div></button>
-<button onclick="load_GTABQ2()" onMouseOver="progress.innerHTML='GTAV BeefQueefMod 1.34 by GraFfix_221211'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_GTABQ2()" onMouseOver="progress.innerHTML='GTAV BeefQueefMod 1.34 by GraFfix_221211'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.34</div></button>
-<button onclick="load_expul()" onMouseOver="progress.innerHTML='GTAV Expulsion Mode Menu 1.35 by LushModz'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_expul()" onMouseOver="progress.innerHTML='GTAV Expulsion Mode Menu 1.35 by LushModz'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.35</div></button>
 <br>
-<button onclick="load_Wilde38()" onMouseOver="progress.innerHTML='GTAV Expulsion Mod Menu 1.38 v1.7 by x_WildeModz_x'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_Wilde38()" onMouseOver="progress.innerHTML='GTAV Expulsion Mod Menu 1.38 v1.7 by x_WildeModz_x'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.38</div></button>
-<button onclick="load_Wilde46()" onMouseOver="progress.innerHTML='GTAV Expulsion Mod Menu 1.46 by x_WildeModz_x'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_Wilde46()" onMouseOver="progress.innerHTML='GTAV Expulsion Mod Menu 1.46 by x_WildeModz_x'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.46</div></button>
-<button onclick="load_Wilde47()" onMouseOver="progress.innerHTML='GTAV Expulsion Mod Menu 1.47 by x_WildeModz_x'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_Wilde47()" onMouseOver="progress.innerHTML='GTAV Expulsion Mod Menu 1.47 by x_WildeModz_x'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.47</div></button>
 </div>
 
 <div id=rdr style="text-align:center;display:none">
-<button onclick="backall()" onMouseOver="progress.innerHTML='Back to Base Menu'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="backall()" onMouseOver="progress.innerHTML='Back to Base Menu'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/back.png"></div><div class=butTXT>Return to Menu</div></button>
 <br>
-<button onclick="load_Oysters100()" onMouseOver="progress.innerHTML='Red dead redemption 2 mod  menu 1.00 V1.3.6 by RF0oDxM0Dz (R1 + Square)'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_Oysters100()" onMouseOver="progress.innerHTML='Red dead redemption 2 mod  menu 1.00 V1.3.6 by RF0oDxM0Dz (R1 + Square)'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/rdr2.png"></div><div class=butTXT>RDR 2 v1.00</div></button>
-<button onclick="load_Oysters113()" onMouseOver="progress.innerHTML='Red dead redemption 2 mod  menu 1.13 V1.3.6 by RF0oDxM0Dz (R1 + Square)'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_Oysters113()" onMouseOver="progress.innerHTML='Red dead redemption 2 mod  menu 1.13 V1.3.6 by RF0oDxM0Dz (R1 + Square)'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/rdr2.png"></div><div class=butTXT>RDR 2 v1.13</div></button>
-<button onclick="load_Oysters119()" onMouseOver="progress.innerHTML='Red dead redemption 2 mod  menu 1.19 V1.3.6 by RF0oDxM0Dz (R1 + Square)'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_Oysters119()" onMouseOver="progress.innerHTML='Red dead redemption 2 mod  menu 1.19 V1.3.6 by RF0oDxM0Dz (R1 + Square)'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/rdr2.png"></div><div class=butTXT>RDR 2 v1.19</div></button>
 <br>
-<button onclick="load_Oysters124()" onMouseOver="progress.innerHTML='Red dead redemption 2 mod  menu 1.24 V1.3.6 by RF0oDxM0Dz (R1 + Square)'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_Oysters124()" onMouseOver="progress.innerHTML='Red dead redemption 2 mod  menu 1.24 V1.3.6 by RF0oDxM0Dz (R1 + Square)'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/rdr2.png"></div><div class=butTXT>RDR 2 v1.24</div></button>
-<button onclick="load_Oysters129()" onMouseOver="progress.innerHTML='Red dead redemption 2 mod  menu 1.29 V1.3.6 by RF0oDxM0Dz (R1 + Square)'" onmouseout="progress.innerHTML='Full Host Auto Exploit GoldHen v2.4b16.2 PS4 9.00'">
+<button onclick="load_Oysters129()" onMouseOver="progress.innerHTML='Red dead redemption 2 mod  menu 1.29 V1.3.6 by RF0oDxM0Dz (R1 + Square)'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/rdr2.png"></div><div class=butTXT>RDR 2 v1.29</div></button>
 </div>
-<div id=bottommsg class="msgs bottopmsg">© Magnum Game Gorontalo&nbsp;&nbsp;-&nbsp;&nbsp;Thanks to All Dev PlayStation Jailbreak</div>
+<div id=bottommsg class="msgs bottopmsg">Avatar Gamez&nbsp;&nbsp;-&nbsp;&nbsp;Gorontalo</div>
 <script>
 var bzip2 = {};
 
