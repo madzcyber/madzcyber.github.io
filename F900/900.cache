@@ -1,6 +1,35 @@
 CACHE MANIFEST 
 
 CACHE: 
+../font/font1.ttf
+../font/font2.ttf
+../img/hen.png
+../img/newgoldhen.png
+../img/WebRTE.png
+../img/ps4debug.png
+../img/OrbisToolbox.png
+../img/tools.png
+../img/dumper.png
+../img/linux.png
+../img/gtav.png
+../img/ps4trainer.png
+../img/rdr2.png
+../img/back.png
+../img/backup.png
+../img/restore.png
+../img/avatar.png
+../img/rifrenamer.png
+../img/ftp.png
+../img/historyBlocker.png
+../img/app2usb.png
+../img/binloader.png
+../img/enableupdates.png
+../img/DEXenable.png
+../img/DEXdisable.png
+../img/disableupdates.png
+../img/hdd.png
+../img/kernelDumper.png
+../img/moduledumper.png
 alert.js
 app-dumper.bin.bz2
 app2usb.bin.bz2
