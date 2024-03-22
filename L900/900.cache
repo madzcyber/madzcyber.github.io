@@ -12,6 +12,7 @@ CACHE MANIFEST
 ../img/DEXenable.png
 ../img/historyBlocker.png
 ../img/DEXdisable.png
+../img/img.jpg
 alert.mjs
 cache.html
 chain.mjs

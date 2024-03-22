@@ -3,6 +3,7 @@ CACHE MANIFEST
 
 ../font/font1.ttf
 ../font/font2.ttf
+../img/img.jpg
 alert.mjs
 cache.html
 config.mjs
