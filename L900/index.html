@@ -144,16 +144,52 @@ function load_EnableUpdates(){
     PLfile = "enableupdates.bin";
     out_jb = "AllPL";     load_poc();
 }
-  
-function load_Orbis(){
-    progress.innerHTML="Orbis-Toolbox loading... please wait"; LoadedMSG="Orbis-Toolbox Loaded";
-    PLfile = "Orbis-Toolbox-900.bin";
-    out_jb = "AllPL";     load_poc();
-}
 
 function load_History(){
     progress.innerHTML="History Blocker loading... please wait"; LoadedMSG="History Blocker Loaded";
     PLfile = "historyblocker.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_gtav100(){
+    progress.innerHTML="Mod GTA V loading... please wait"; LoadedMSG="Mod GTA V v1.00 Loaded";
+    PLfile = "gtav_100.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_gtav127(){
+    progress.innerHTML="Mod GTA V loading... please wait"; LoadedMSG="Mod GTA V v1.27 Loaded";
+    PLfile = "gtav_127.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_gtav132(){
+    progress.innerHTML="Mod GTA V loading... please wait"; LoadedMSG="Mod GTA V v1.32 Loaded";
+    PLfile = "gtav_132.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_gtav133(){
+    progress.innerHTML="Mod GTA V loading... please wait"; LoadedMSG="Mod GTA V v1.33 Loaded";
+    PLfile = "gtav_133.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_gtav138(){
+    progress.innerHTML="Mod GTA V loading... please wait"; LoadedMSG="Mod GTA V v.138 Loaded";
+    PLfile = "gtav_138.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_gtav146(){
+    progress.innerHTML="Mod GTA V loading... please wait"; LoadedMSG="Mod GTA V v1.46 Loaded";
+    PLfile = "gtav_146.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_gtav147(){
+    progress.innerHTML="Mod GTA V loading... please wait"; LoadedMSG="Mod GTA V v1.47 Loaded";
+    PLfile = "gtav_147.bin";
     out_jb = "AllPL";     load_poc();
 }
 
@@ -178,24 +214,6 @@ function Bloader(){
  chain.run();
  Binset();
 }
-
-function load_ToDexE(){
-    progress.innerHTML="ToDEX Enabling... please wait"; LoadedMSG="ToDex Enabled";
-    PLfile = "todex-enable.bin";
-    out_jb = "AllPL";     load_poc();
-}
-
-function load_ToDexD(){
-    progress.innerHTML="ToDEX Disabling... please wait"; LoadedMSG="ToDex Disabled";
-    PLfile = "todex-disable.bin";
-    out_jb = "AllPL";     load_poc();
-}
-
-function load_copych(){
-    progress.innerHTML="Copy Cheat loading... please wait"; LoadedMSG="Payload Loaded";
-    PLfile = "CopyCH.bin";
-    out_jb = "AllPL";     load_poc();
-}
 </script>
 <script src="./int64.js"></script>
 <script src="./rop.js"></script>
@@ -203,7 +221,7 @@ function load_copych(){
 <script type=module src="./alert.mjs"></script>
 </head>
 <body style='background-image:url("../img/img.jpg");background-position:center;background-repeat:no-repeat;background-size:cover;background-attachment:fixed'>
-<div class=msgs>LITE HOST AUTO XPLOIT GOLDHEN V2.4B16.2</div>
+<div class=msgs>LITE HOST GOLDHEN V2.4B16.2 9.00</div>
 <h1 id=progress style='font-family:font2;font-size:28px;text-align:center;color:white;'>Status</h1>
 <br>
 <div id=all style="text-align:center;display:none">
@@ -211,22 +229,30 @@ function load_copych(){
 <div class=butIMG><img src="../img/newgoldhen.png"></div><div class=butTXT>New GoldHen</div></button>
 <button onclick="Bloader()" onMouseOver="progress.innerHTML='Binloader Port 9020'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/binloader.png"></div><div class=butTXT>Bin Loader</div></button>
-<button onclick="load_Orbis()" onMouseOver="progress.innerHTML='Orbis Toolbox Loader Alfa 1190'" onmouseout="progress.innerHTML='Status'">
-<div class=butIMG><img src="../img/OrbisToolbox.png"></div><div class=butTXT>Orbix Toolbox</div></button>
 <br>
 <button onclick="load_DisableUpdates()" onMouseOver="progress.innerHTML='Creates dummy files in the PS4 update folder'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/disableupdates.png"></div><div class=butTXT>Disable Updates</div></button>
-<button onclick="load_copych()" onMouseOver="progress.innerHTML='Copy json and shn files from USB to PS4'" onmouseout="progress.innerHTML='Status'">
-<div class=butIMG><img src="../img/ps4trainer.png"></div><div class=butTXT>Copy Cheat</div></button>
+<button onclick="load_History()" onMouseOver="progress.innerHTML='Disable the auto opening of the last page used in the PS4 WebBrowser'" onmouseout="progress.innerHTML='Status'">
+<div class=butIMG><img src="../img/historyBlocker.png"></div><div class=butTXT>History Blocker</div></button>
 <button onclick="load_DisableUpdates()" onMouseOver="progress.innerHTML='Removes the dummy files in the PS4 update folder'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/enableupdates.png"></div><div class=butTXT>Enable Updates</div></button>
 <br>
-<button onclick="load_ToDexE()" onMouseOver="progress.innerHTML='Unlocks some debug features available on testkit'" onmouseout="progress.innerHTML='Status'">
-<div class=butIMG><img src="../img/DEXenable.png"></div><div class=butTXT>ToDex Enable</div></button>
-<button onclick="load_History()" onMouseOver="progress.innerHTML='Disable the auto opening of the last page used in the PS4 WebBrowser'" onmouseout="progress.innerHTML='Status'">
-<div class=butIMG><img src="../img/historyBlocker.png"></div><div class=butTXT>History Blocker</div></button>
-<button onclick="load_ToDexD()" onMouseOver="progress.innerHTML='Disable ToDEX'" onmouseout="progress.innerHTML='Status'">
-<div class=butIMG><img src="../img/DEXdisable.png"></div><div class=butTXT>ToDex Disable</div></button>
+<button onclick="load_gtav100()" onMouseOver="progress.innerHTML='Mod GTA V ArabicGuy 1.00 for 900 L1 + R1'" onmouseout="progress.innerHTML='Status'">
+<div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.00</div></button>
+<button onclick="load_gtav127()" onMouseOver="progress.innerHTML='Mod GTA V ArabicGuy 1.27 for 900 RIGHT + SQUARE'" onmouseout="progress.innerHTML='Status'">
+<div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.27</div></button>
+<button onclick="load_gtav132()" onMouseOver="progress.innerHTML='Mod GTA V Expulsion 1.32 for 900'" onmouseout="progress.innerHTML='Status'">
+<div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.32</div></button>
+<br>
+<button onclick="load_gtav133()" onMouseOver="progress.innerHTML='Mod GTA V Expulsion 1.33 for 900'" onmouseout="progress.innerHTML='Status'">
+<div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.33</div></button>
+<button onclick="load_gtav138()" onMouseOver="progress.innerHTML='Mod GTA V Expulsion 1.38 for 900'" onmouseout="progress.innerHTML='Status'">
+<div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.38</div></button>
+<button onclick="load_gtav146()" onMouseOver="progress.innerHTML='Mod GTA V Expulsion 1.46 for 900'" onmouseout="progress.innerHTML='Status'">
+<div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.46</div></button>
+<br>
+<button onclick="load_gtav147()" onMouseOver="progress.innerHTML='Mod GTA V Expulsion 1.47 for 900'" onmouseout="progress.innerHTML='Status'">
+<div class=butIMG><img src="../img/gtav.png"></div><div class=butTXT>GTA V v1.47</div></button>
 </div>
 <div id=bottommsg class="msgs bottopmsg">MAGNUM GAME&nbsp;&nbsp;-&nbsp;&nbsp;GORONTALO</div>
 </body>
