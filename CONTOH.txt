@@ -74,3 +74,11 @@ font-size:40px;
 padding:5px 0 1px 0;
 }
 </style>
+
+<button onclick="load_PAYLOAD()" onMouseOver="progress.innerHTML='DESKRIPSI'" onmouseout="progress.innerHTML='Status'">
+<div class=butIMG><img src="../img/GAMBAR.png"></div><div class=butTXT>JUDUL</div></button>
+<button onclick="load_PAYLOAD()" onMouseOver="progress.innerHTML='DESKRIPSI'" onmouseout="progress.innerHTML='Status'">
+<div class=butIMG><img src="../img/GAMBAR.png"></div><div class=butTXT>JUDUL</div></button>
+<button onclick="load_PAYLOAD()" onMouseOver="progress.innerHTML='DESKRIPSI'" onmouseout="progress.innerHTML='Status'">
+<div class=butIMG><img src="../img/GAMBAR.png"></div><div class=butTXT>JUDUL</div></button>
+
