@@ -1,4 +1,11 @@
-<style>
+html {
+color:white;
+font-size:20px;
+text-align:center;
+text-shadow: 4px 4px 4px black;
+margin:0;
+overflow:hidden;
+}
 @font-face {
 font-family: font1;
 src: url(./font/font1.ttf);
@@ -9,53 +16,26 @@ font-family: font2;
 src: url(./font/font2.ttf);
 font-weight: bold;
 }
-body{
+.btn{
+background:white;
+box-shadow: 4px 4px 4px black;
+border: 2px solid black;
+border-radius: 10px;
+width: 225px;
+height: 45px;            
+text-align: center;
+padding: 6px;
+margin: 6px;
+font-size:22px;
+font-family: font2;
+}
+.btn:hover{
+background:black;
 color:white;
-font-size:20px;
-text-align:center;
-text-shadow: 4px 4px 4px black;
-margin:0;
-overflow:hidden;
-}
-button{
-font-family:font2;
-width:388px;
-margin:5px 3px 5px 3px;
-padding:0px;
-border:3px solid white;
-border-radius:5px;
-text-align:left;
-text-shadow: 4px 4px 4px black;
-color:white;
-outline:none;
-background:rgba(0,0,0,0.5);
-}
-button:hover{
-cursor:pointer;
-background-color:#212F3D;
-}
-.butIMG{
-display:inline-block;
-margin:-0px;
-border-right:3px solid white;
-outline:none;
+border: 2px solid white;
 cursor:pointer;
 }
-.butIMG img{
-width:70px;
-height:70px;
-padding:5px 5px 2px 5px;
-cursor:pointer;
-}
-.butTXT{
-float:right;
-text-align:center;
-width:299px;
-font-size:28px;
-margin:22px 0 0 0;
-cursor:pointer;
-}
-.msgs{
+.magnum{
 font-family:font1;
 height:50px;
 font-size:60px;
@@ -63,7 +43,7 @@ margin-top:1%;
 padding:5px 0 5px 0;
 }
 .bottopmsg{
-font-family:font1;
+font-family:font2;
 text-align:center;
 display:block;
 position:fixed;
@@ -73,7 +53,12 @@ height:43px;
 font-size:40px;
 padding:5px 0 1px 0;
 }
-</style>
+
+<a href="LINK/index.html"><button class="btn" onmouseover="progress.innerHTML='DESKRIPSI'" onmouseout="progress.innerHTML='Status'">JUDUL</button></a>
+<a href="LINK/index.html"><button class="btn" onmouseover="progress.innerHTML='DESKRIPSI'" onmouseout="progress.innerHTML='Status'">JUDUL</button></a>
+<a href="LINK/index.html"><button class="btn" onmouseover="progress.innerHTML='DESKRIPSI'" onmouseout="progress.innerHTML='Status'">JUDUL</button></a>
+<a href="LINK/index.html"><button class="btn" onmouseover="progress.innerHTML='DESKRIPSI'" onmouseout="progress.innerHTML='Status'">JUDUL</button></a>
+<a href="LINK/index.html"><button class="btn" onmouseover="progress.innerHTML='DESKRIPSI'" onmouseout="progress.innerHTML='Status'">JUDUL</button></a>
 
 <button onclick="load_PAYLOAD()" onMouseOver="progress.innerHTML='DESKRIPSI'" onmouseout="progress.innerHTML='Status'">
 <div class=butIMG><img src="../img/GAMBAR.png"></div><div class=butTXT>JUDUL</div></button>
