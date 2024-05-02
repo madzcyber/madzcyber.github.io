@@ -2,9 +2,15 @@
 <head>
 <meta charset="utf-8">
 <title>LITE HOST GOLDHEN V2.4B16.2 PS4 9.00 | MAGNUM GAME</title>
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
 <script>
 if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
+</script>
+<script src="int64.js"></script>
+<script src="rop.js"></script>
+<script src="kexploit.js" defer></script>
+<script src="exploit.js" defer></script>
+<script>
 function load_poc(){
  var req = new XMLHttpRequest();
  req.responseType = "arraybuffer";
@@ -29,6 +35,7 @@ function load_poc(){
 }
 
 function jbdone() {
+document.getElementById("input").remove();
 window.progress.innerHTML="Jailbreak Done";
 all.style.display = "block";
 }
@@ -47,25 +54,9 @@ window.progress.innerHTML="Payload Loaded. Send payloads to port 9021";
 alert("Payload Loaded. Send payloads to port 9021");
 }
 
-function goldhen212(){
-    progress.innerHTML="Goldhen 2.1.2 loading... please wait";
-    LoadedMSG="GoldHEN 2.1.2 Loaded";
-    PLfile = "goldhen_212_900.bin";
-    out_jb = "AllPL";
-    load_poc();
-}
-
-function goldhen23(){
-    progress.innerHTML="Goldhen 2.3 loading... please wait";
-    LoadedMSG="GoldHEN 2.3 Loaded";
-    PLfile = "goldhen_2.3_900.bin";
-    out_jb = "AllPL";
-    load_poc();
-}
-
 function goldhen24(){
     progress.innerHTML="Goldhen V2.4b16.2 loading... please wait";
-    LoadedMSG="GoldHEN V2.4b16.2 Loaded";
+    LoadedMSG="GoldHEN V2.4b16.2 Loaded, Press HOME Button on Stick to Exit";
     PLfile = "goldhen_2.4_b16.2_900.bin";
     out_jb = "AllPL";
     load_poc();
@@ -127,15 +118,15 @@ function load_Orbis(){
     out_jb = "AllPL";     load_poc();
 }
 
-function load_WebRTE(){
-    progress.innerHTML="WebRTE loading... please wait"; LoadedMSG="WebRTE Loaded";
-    PLfile = "WebRTE.bin";
+function load_historyblock(){
+    progress.innerHTML="History Blocker loading... please wait"; LoadedMSG="History Blocker Loaded";
+    PLfile = "historyblocker.bin";
     out_jb = "AllPL";     load_poc();
 }
 
-function load_history(){
-    progress.innerHTML="History Blocker loading... please wait"; LoadedMSG="History Blocker Loaded";
-    PLfile = "historyblocker.bin";
+function load_WebRTE(){
+    progress.innerHTML="WebRTE loading... please wait"; LoadedMSG="WebRTE Loaded";
+    PLfile = "WebRTE.bin";
     out_jb = "AllPL";     load_poc();
 }
 
@@ -179,40 +170,35 @@ function load_copych(){
     out_jb = "AllPL";     load_poc();
 }
 </script>
-<script src="./int64.js"></script>
-<script src="./rop.js"></script>
-<script src="./kexploit.js"></script>
-<script type=module src="./alert.mjs"></script>
 </head>
 <body>
 <div class=magnum>LITE HOST GOLDHEN V2.4B16.2 9.00</div>
 <h1 id=progress style='font-family:font2;font-size:30px;text-align:center;color:white;'>Status</h1>
 <br>
 <div id=all style="text-align:center;display:none">
-<button id="button-Payload" onMouseOver="progress.innerHTML='GoldHen v2.1.2 by SISTR0 for PS4 9.00 Fw'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="goldhen212()" > GoldHen V2.1.2 </button>
-<button id="button-Payload" onMouseOver="progress.innerHTML='GoldHen v2.3 by SISTR0 for PS4 9.00 Fw'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="goldhen23()" > GoldHen V2.3 </button>
-<button id="button-Payload" onMouseOver="progress.innerHTML='GoldHen v2.4b16.2 by SISTR0 for PS4 9.00 Fw'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="goldhen24()" > New GoldHen </button>
-<br><br>
-<button id="button-Payload" onMouseOver="progress.innerHTML='WebRTE for PS4 9.00 fw'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_WebRTE()" > WebRTE </button>
-<button id="button-Payload" onMouseOver="progress.innerHTML='ps4debug for PS4 9.00 fw'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_PS4Debug()" > Ps4debug </button>
-<button id="button-Payload" onMouseOver="progress.innerHTML='Orbis Toolbox Loader Alfa 1190 for PS4 9.00 fw'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_Orbis()" > Orbis Toolbox </button>
-<button id="button-Payload" onMouseOver="progress.innerHTML='Disable the auto opening of the last page used in the PS4 WebBrowser'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_history()" > History Blocker </button>
+<button style='font-size:30px;height:60px;' id="button-Payload" onMouseOver="progress.innerHTML='GoldHen v2.4b16.2 by SISTR0 for PS4 9.00 Fw'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="goldhen24()" > New GoldHen </button>
 <br>
-<button id="button-Payload" onMouseOver="progress.innerHTML='unlocks some debug features available on testkit'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_ToDexE()" > ToDex Enable </button>
-<button id="button-Payload" onMouseOver="progress.innerHTML='Disable ToDEX'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_ToDexD()" > ToDex Disable </button>
-<button id="button-Payload" onMouseOver="progress.innerHTML='Creates dummy files in the PS4 update folder'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_DisableUpdates()" >Disable Updates</button>
-<button id="button-Payload" onMouseOver="progress.innerHTML='Removes the dummy files in the PS4 update folder'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_EnableUpdates()" > Enable Update </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='WebRTE for PS4 9.00 fw'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_WebRTE()" > WebRTE </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='ps4debug for PS4 9.00 fw'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_PS4Debug()" > Ps4debug </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Orbis Toolbox Loader Alfa 1190 for PS4 9.00 fw'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_Orbis()" > Orbis Toolbox </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Disable the auto opening of the last page used in the PS4 WebBrowser'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_historyblock()" > History Block </button>
 <br>
-<button id="button-Payload" onMouseOver="progress.innerHTML='Move installed games to an external USB drive'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_App2USB()" > App2USB </button>
-<button id="button-Payload" onMouseOver="progress.innerHTML='Binloader Port 9020 for PS4 9.00 Fw'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="Bloader()" > BinLoader </button>
-<button id="button-Payload" onMouseOver="progress.innerHTML='Mira loader Port 9021 for PS4 9.00 Fw'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="Mloader()" > MiraLoader </button>
-<button id="button-Payload" onMouseOver="progress.innerHTML='Copy json and shn files from USB to PS4'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_copych()" > Cheat Copy </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='unlocks some debug features available on testkit'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_ToDexE()" > ToDex Enable </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Disable ToDEX'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_ToDexD()" > ToDex Disable </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Creates dummy files in the PS4 update folder'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_DisableUpdates()" >Disable Updates</button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Removes the dummy files in the PS4 update folder'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_EnableUpdates()" > Enable Update </button>
 <br>
-<button id="button-Payload" onMouseOver="progress.innerHTML='Dump Games only to a USB drive by Leeful'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_DumperG()" > Dumper Game </button>
-<button id="button-Payload" onMouseOver="progress.innerHTML='Dump Games Update only to a USB drive by Leeful'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_DumperU()" > Dumper Update </button>
-<button id="button-Payload" onMouseOver="progress.innerHTML='Dump Merged Games and Update to a USB drive by Leeful'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_DumperMGU()" > Dumper MGU </button>
-<button id="button-Payload" onMouseOver="progress.innerHTML='Dump Seperate Games and Update to a USB drive by Leeful'"; onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_DumperSGU()" > Dumper SGU </button>
-</div>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Move installed games to an external USB drive'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_App2USB()" > App2USB </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Binloader Port 9020 for PS4 9.00 Fw'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="Bloader()" > BinLoader </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Mira loader Port 9021 for PS4 9.00 Fw'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="Mloader()" > MiraLoader </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Copy json and shn files from USB to PS4'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_copych()" > Cheat Copy </button>
+<br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Dump Games only to a USB drive by Leeful'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_DumperG()" > Dumper Game </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Dump Games Update only to a USB drive by Leeful'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_DumperU()" > Dumper Update </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Dump Merged Games and Update to a USB drive by Leeful'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_DumperMGU()" > Dumper MGU </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Dump Seperate Games and Update to a USB drive by Leeful'" onmouseout="progress.innerHTML='Status'" class="btn" onclick="load_DumperSGU()" > Dumper SGU </button>
+</div><br>
 <div id=bottommsg class="msgs bottopmsg">MAGNUM GAME&nbsp;&nbsp;-&nbsp;&nbsp;GORONTALO</div>
 </body>
+
 </html>

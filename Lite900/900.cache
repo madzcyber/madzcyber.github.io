@@ -1,16 +1,8 @@
 CACHE MANIFEST 
 # v2.5.5 Self-Host 
 
-../style.css
-../font/font1.ttf
-../font/font2.ttf
-../img/img.jpg
-alert.mjs
 app2usb.bin
 cache.html
-chain.mjs
-config.mjs
-constants.mjs
 CopyCH.bin
 disableupdates.bin
 DumperG.bin
@@ -18,25 +10,21 @@ DumperMGU.bin
 DumperSGU.bin
 DumperU.bin
 enableupdates.bin
-exploit.mjs
-goldhen_2.3_900.bin
+exploit.js
+font1.ttf
+font2.ttf
 goldhen_2.4_b16.2_900.bin
-goldhen_212_900.bin
 historyblocker.bin
+img.jpg
 index.html
 int64.js
-int64.mjs
 kexploit.js
-mem.mjs
-memtools.mjs
 MiraLoader.bin
-offset.mjs
 Orbis-Toolbox-900.bin
 ps4debug.bin
 rop.js
-rw.mjs
+style.css
 todex-disable.bin
 todex-enable.bin
 ToDex.bin
-utils.mjs
 WebRTE.bin
