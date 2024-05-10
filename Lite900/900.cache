@@ -1,6 +1,10 @@
 CACHE MANIFEST 
 # v2.5.5 Self-Host 
 
+../style.css
+../font/font1.ttf
+../font/font2.ttf
+../img/img.jpg
 app2usb.bin
 cache.html
 CopyCH.bin
@@ -11,11 +15,8 @@ DumperSGU.bin
 DumperU.bin
 enableupdates.bin
 exploit.js
-font1.ttf
-font2.ttf
 goldhen.bin
 historyblocker.bin
-img.jpg
 index.html
 int64.js
 kexploit.js
