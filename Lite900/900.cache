@@ -1,10 +1,6 @@
 CACHE MANIFEST 
 # v2.5.5 Self-Host 
 
-../style.css
-../font/font1.ttf
-../font/font2.ttf
-../img/img.jpg
 app2usb.bin
 cache.html
 CopyCH.bin
@@ -24,7 +20,6 @@ MiraLoader.bin
 Orbis-Toolbox-900.bin
 ps4debug.bin
 rop.js
-style.css
 todex-disable.bin
 todex-enable.bin
 ToDex.bin
