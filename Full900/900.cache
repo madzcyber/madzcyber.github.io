@@ -1,10 +1,6 @@
 CACHE MANIFEST 
 # v2.5.5 Self-Host 
 
-../style.css
-../font/font1.ttf
-../font/font2.ttf
-../img/img.jpg
 alert.mjs
 app-dumper.bin.bz2
 app2usb.bin.bz2
@@ -35,13 +31,7 @@ fan75.bin.bz2
 fan80.bin.bz2
 frontend.js
 ftp.bin.bz2
-goldhen2b2.bin
-goldhen_2.2.2_900.bin
-goldhen_2.2.3_900.bin
-goldhen_2.2.4_900.bin
-goldhen_2.3_900.bin
 goldhen.bin
-goldhen_212_900.bin
 gtava0.bin.bz2
 gtava1.bin.bz2
 gtava2.bin.bz2
