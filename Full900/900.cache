@@ -1,6 +1,10 @@
 CACHE MANIFEST 
 # v2.5.5 Self-Host 
 
+../style.css
+../font/font1.ttf
+../font/font2.ttf
+../img/img.jpg
 app-dumper.bin.bz2
 app2usb.bin.bz2
 backupdb.bin.bz2
