@@ -1,71 +1,60 @@
-<html>
+<html manifest="900.cache">
 <head>
-<title>AUTO XPLOIT GOLDHEN PS4 9.00 | MAGNUM GAME</title>
-<style>
-@font-face {
-font-family: font1;
-src: url(../font/font1.ttf);
-font-weight: bold;
-}
-@font-face {
-font-family: font2;
-src: url(../font/font2.ttf);
-font-weight: bold;
-}
-body{
-background-image:url("../img/img.jpg");
-background-position:center;
-background-repeat:no-repeat;
-background-size:cover;
-background-attachment:fixed;
-color:white;
-font-size:28px;
-text-align:center;
-margin:0;
-overflow:hidden;
-text-shadow: 4px 4px 4px black;
-}
-.info{
-font-family:font2;
-position:relative;
-top:38%;
-}
-.msgs{
-font-family:font1;
-height:50px;
-font-size:60px;
-margin-top:1%;
-padding:5px 0 5px 0;
-}
-.bottopmsg{
-font-family:font2;
-text-align:center;
-display:block;
-position:fixed;
-bottom:15px;
-width:100%;
-height:43px;
-font-size:40px;
-padding:5px 0 1px 0;
-}
-</style>
-<script>
-function webkitExploit() 
-{
- import('./alert.mjs');
-}
-</script>
-
-</head>
-<body onload="webkitExploit();"><!--  -->
-<script src="exploit.js"></script>
-<div class=msgs>AUTO XPLOIT GOLDHEN PS4 9.00</div>
-<div id="msgs" class="info">Running Webkit Exploit, Please Wait ...</div>
-
-<div id=bottommsg class="msgs bottopmsg">MAGNUM GAME&nbsp;&nbsp;-&nbsp;&nbsp;GORONTALO</div>
-</div>
+<meta charset="utf-8">
+<title>HOST GOLDHEN PS4 9.00 | MAGNUM GAME</title>
+<link rel="stylesheet" href="../style.css">
 <script>
 if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
 </script>
+<script src="int64.js"></script>
+<script src="rop.js"></script>
+<script src="kexploit.js" defer></script>
+<script src="exploit.js" defer></script>
+<script>
+function load_pocB(){
+ var req = new XMLHttpRequest();
+ req.responseType = "arraybuffer";
+ req.open('GET', PLfile);
+ req.send();
+ req.onreadystatechange = function () {
+  if (req.readyState == 4) {
+   PLD = req.response;
+   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
+   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
+   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
+   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
+   tmp.set(new Uint8Array(req.response), 0);
+   tmp.set(padding, req.response.byteLength);
+   var shellcode = new Uint32Array(tmp.buffer);
+   pl.set(shellcode,0);
+   var pthread = p.malloc(0x10);
+   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
+   allset();
+  }
+ };
+}
+
+function jbdone() {
+document.getElementById("input").remove();
+window.progress.innerHTML="Jailbreak Done";
+goldhen();
+}
+function goldhen(){
+    progress.innerHTML="GoldHen v2.4b17.3 loading... please wait";
+    LoadedMSG="Press HOME Button on Stick to Exit";
+    PLfile = "goldhen.bin";
+    out_jb = "AllPL";
+    load_pocB();
+    }
+function allset() {
+window.progress.innerHTML= LoadedMSG
+}
+</script>
+</head>
+<body>
+<div class=magnum>HOST GOLDHEN PS4 9.00</div>
+<h1 id=progress style='font-family:font2;font-size:30px;text-align:center;color:white;'>Status</h1>
+
+<div id=bottommsg class="msgs bottopmsg">MAGNUM GAME&nbsp;&nbsp;-&nbsp;&nbsp;GORONTALO</div>
 </body>
 </html>
