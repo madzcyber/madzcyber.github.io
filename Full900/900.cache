@@ -4,6 +4,7 @@ CACHE MANIFEST
 ../style.css
 ../font/font1.ttf
 ../font/font2.ttf
+../img/img.jpg
 app-dumper.bin.bz2
 app2usb.bin.bz2
 backupdb.bin.bz2
