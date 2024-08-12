@@ -131,7 +131,14 @@
 <button class="btn" onMouseOver="msgs2.innerHTML='GoldHen v2.2.4 by Sistro'"; onmouseout="msgs2.innerHTML='Status'" onclick="load_goldhen224();"><b>GoldHenV2.2.4 </button>
 <button class="btn" onMouseOver="msgs2.innerHTML='hen+mira'"; onmouseout="msgs2.innerHTML='Status'" onclick="load_mirahen();"><b>&nbsp;&nbsp;MiraHen18&nbsp;&nbsp; </button>
 </div>
-<div id=bottommsg class="msgs bottopmsg">MAGNUM GAME&nbsp;&nbsp;-&nbsp;&nbsp;GORONTALO</div>
+<div id=bottommsg class="msgs bottopmsg">
+<script type="text/javascript">
+var today = new Date()
+var year = today.getFullYear()
+document.write(year)
+</script>
+- MAGNUMZ.MY.ID
+</div>
 <script>
 function getScript(source,callback){var gs = document.createElement('script');gs.src = source;gs.onload = callback;gs.async = false;document.body.appendChild(gs);}
 function loadScript(){getScript('exploit.js',function(){setTimeout(exploit,1000);});}
