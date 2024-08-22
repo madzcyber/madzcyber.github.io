@@ -5,6 +5,7 @@ CACHE:
 ../img/img.jpg
 ../font/font1.ttf
 ../font/font2.ttf
+../font/font3.ttf
 app2usb.bin.bz2
 backup.bin.bz2
 cache.html
