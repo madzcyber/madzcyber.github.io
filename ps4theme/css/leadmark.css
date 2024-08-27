@@ -69,16 +69,23 @@ body {
   line-height: 1.5;
   color: #fff;
   text-align: left;
-  background: -webkit-linear-gradient(287deg, rgb(1, 61, 173) 0%, rgb(0, 40, 154) 100%);
-background: -o-linear-gradient(287deg, rgb(1, 61, 173) 0%, rgb(0, 40, 154) 100%);
-background: -ms-linear-gradient(287deg, rgb(1, 61, 173) 0%, rgb(0, 40, 154) 100%);
-background: -moz-linear-gradient(287deg, rgb(1, 61, 173) 0%, rgb(0, 40, 154) 100%);
-background: linear-gradient(163deg, rgb(1, 61, 173) 0%, rgb(0, 40, 154) 100%);
-background-color: #0054c4;
+  background-color: black;
 }
 
 [tabindex="-1"]:focus {
   outline: 0 !important;
+}
+
+@font-face {
+font-family: font1;
+src: url(../fonts/font1.ttf);
+font-weight: bold;
+}
+
+@font-face {
+font-family: font2;
+src: url(../fonts/font2.ttf);
+font-weight: bold;
 }
 
 hr {
@@ -11229,7 +11236,7 @@ textarea.form-control {
 }
 
 .navbar.custom-navbar .nav-link {
-  color: #0049ce;
+  color: #fff;
   margin: 0 6px;
 }
 
@@ -11240,7 +11247,7 @@ textarea.form-control {
 .navbar.custom-navbar.affix {
   padding-top: 0.4rem;
   padding-bottom: 0.4rem;
-  background: #0049ce;
+  background: #b7155a;
   border-bottom: 1px solid #302c29;
 }
 
@@ -11483,7 +11490,7 @@ textarea.form-control {
 }
 
 .header .shape svg path {
-  fill: #0049ce;
+  fill: #b7155a;
 }
 
 @media (max-width: 1199.98px) {
