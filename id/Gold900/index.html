@@ -1,0 +1,62 @@
+<html manifest="900.cache">
+<head>
+<meta charset="utf-8">
+<title>HOST OTOMATIS GOLDHEN PS4 9.00 | MAGNUM GAME</title>
+<link rel="stylesheet" href="../style.css">
+<script>
+if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
+</script>
+<script src="int64.js"></script>
+<script src="rop.js"></script>
+<script src="kexploit.js" defer></script>
+<script src="exploit.js" defer></script>
+<script>
+function load_pocB(){
+ var req = new XMLHttpRequest();
+ req.responseType = "arraybuffer";
+ req.open('GET', PLfile);
+ req.send();
+ req.onreadystatechange = function () {
+  if (req.readyState == 4) {
+   PLD = req.response;
+   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
+   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
+   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
+   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
+   tmp.set(new Uint8Array(req.response), 0);
+   tmp.set(padding, req.response.byteLength);
+   var shellcode = new Uint32Array(tmp.buffer);
+   pl.set(shellcode,0);
+   var pthread = p.malloc(0x10);
+   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
+   allset();
+  }
+ };
+}
+
+function jbdone() {
+document.getElementById("input").remove();
+window.progress.innerHTML="Jailbreak Done";
+goldhen();
+}
+function goldhen(){
+    progress.innerHTML="MEMUAT GOLDHEN V2.4B17.3 ... MOHON TUNGGU";
+    LoadedMSG="TEKAN TOMBOL HOME DI STIK UNTUK KELUAR";
+    PLfile = "goldhen.bin";
+    out_jb = "AllPL";
+    load_pocB();
+    }
+function allset() {
+window.progress.innerHTML= LoadedMSG
+}
+</script>
+</head>
+<body>
+<div class=magnum>HOST OTOMATIS GOLDHEN PS4 9.00</div>
+<h1 id=progress style='font-family:font2;font-size:30px;text-align:center;color:yellow'>EVERYTHING ABOUT PLAYSTATION IS HERE</h1>
+
+<div id=bottommsg class="msgs bottopmsg">
+THANKS ALL DEV&nbsp;&nbsp;-&nbsp;&nbsp;MAGNUM GAME GORONTALO
+</div>
+</body>
+</html>
