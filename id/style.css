@@ -23,6 +23,11 @@ font-family: font2;
 src: url(./font/font2.ttf);
 font-weight: bold;
 }
+@font-face {
+font-family: font3;
+src: url(./font/font3.ttf);
+font-weight: bold;
+}
 .btn{
 background-color:white;
 box-shadow: 4px 4px 4px black;
@@ -85,9 +90,11 @@ font-size:30px;
 padding:5px 0 1px 0;
 }
 h2{
+font-family: font3;
 font-size:30px;
 }
 h3{
+font-family: font3;
 font-size:30px;
 }
 #cacheInfo{
