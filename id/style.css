@@ -7,7 +7,6 @@ background-repeat: no-repeat;
 background-color: black;
 color:white;
 font-size:20px;
-font-family: font2;
 text-align:center;
 text-shadow: 4px 4px 4px black;
 margin:0;
@@ -85,11 +84,9 @@ font-size:30px;
 padding:5px 0 1px 0;
 }
 h2{
-font-family:font2;
 font-size:30px;
 }
 h3{
-font-family:font2;
 font-size:30px;
 }
 #cacheInfo{
