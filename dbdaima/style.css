@@ -14,17 +14,7 @@ overflow:hidden;
 }
 @font-face {
 font-family: font1;
-src: url(../font/font1.ttf);
-font-weight: bold;
-}
-@font-face {
-font-family: font2;
-src: url(../font/font2.ttf);
-font-weight: bold;
-}
-@font-face {
-font-family: font3;
-src: url(../font/font3.ttf);
+src: url(./font/font1.ttf);
 font-weight: bold;
 }
 .btn{
@@ -72,15 +62,16 @@ border: 2px solid white;
 }
 .magnum{
 font-family:font1;
-color: #FFBA2A;
+color:#FFBA2A;
 height:50px;
-font-size:65px;
+font-size:70px;
 margin-top:2%;
 padding:5px 0 5px 0;
 }
 .bottopmsg{
-font-family:font2;
-color: #FFBA2A;
+font-family:sans-serif;
+font-weight: bold;
+color:#FFBA2A;
 text-align:center;
 display:block;
 position:fixed;
