@@ -7,7 +7,6 @@ background-repeat: no-repeat;
 background-color: black;
 color:white;
 font-size:20px;
-font-family: font2;
 text-align:center;
 text-shadow: 4px 4px 4px black;
 margin:0;
@@ -23,10 +22,8 @@ font-family: font2;
 src: url(./font/font2.ttf);
 font-weight: bold;
 }
-@font-face {
-font-family: font3;
-src: url(./font/font3.ttf);
-font-weight: bold;
+img{
+cursor:pointer;
 }
 .btn{
 background-color:white;
@@ -40,7 +37,6 @@ text-align: center;
 padding: 6px;
 margin: 6px;
 font-size:24px;
-font-family: font2;
 cursor:pointer;
 }
 .btn:hover{
@@ -125,3 +121,4 @@ margin:0;
 font-size:150px;
 line-height:150px;
 font-family: font1;
+}
