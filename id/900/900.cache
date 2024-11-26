@@ -1,9 +1,6 @@
 CACHE MANIFEST 
 # v2.5.5 Self-Host 
 
-../img/22.png
-../img/23.png
-../img/24.png
 ../style.css
 ../font/font1.ttf
 ../font/font2.ttf
@@ -11,10 +8,7 @@ CACHE MANIFEST
 cache.html
 exploit.js
 goldhen.bin
-goldhen22.bin
-goldhen23.bin
 index.html
 int64.js
 kexploit.js
-MiraLoader.bin
 rop.js
