@@ -1,0 +1,64 @@
+<!-- Copyright (C) 2023-2025 anonymous
+
+This file is part of PSFree.
+
+PSFree is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+PSFree is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>PSFree-Lapse 9.00 Magnum Game</title>
+        <style>
+            @font-face {
+                font-family: 'logging';
+                src: url('fonts/LiberationMono-Regular.ttf');
+            }
+            #console {
+                font-family: 'logging';
+            }
+			body {
+			    background-image: url('BG.jpg');
+			    background-position: center;
+                background-size: cover;
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                background-color: black;
+				overflow: hidden;
+				color: white;
+				font-size: 26px;
+			}
+        </style>
+    </head>
+    <body>
+        PSFree: A PS4/PS5 Exploit Chain<br>
+		Modded by Magnum Game Gorontalo<br><br>
+        <b>PERLU DI PERHATIKAN:</b><br>
+        1. Jika dalam 10 detik GoldHEN tidak tampil, tekan tombol PS di stik dan masuk lagi ke Internet Browser.<br>
+        2. Jika tampil notifikasi error/memori kurang, tekan tombol PS di stik, mulai ulang/restart PS4 lalu coba lagi.<br>
+		3. Jika PS di matikan/shutdown terasa lama, tekan dan tahan lama tombol power di PS untuk mematikan.<br>
+		4. Jika PS di mulai ulang/restart terasa lama, tekan dan tahan lama tombol power di PS untuk mematikan.<br>
+        <pre id='console'></pre>
+    </body>
+	<script>
+	if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
+	function load_mainmenu(){
+	var link = document.createElement('a');
+	document.body.appendChild(link);
+	link.href = '../index.html';
+	link.click();
+	}
+	</script>
+    <script src="./payload.js"></script>
+    <script type='module' src='./alert.mjs'></script>
+</html>
