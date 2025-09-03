@@ -1,5 +1,4 @@
-<!--
-Copyright (C) 2023-2025 anonymous
+<!-- Copyright (C) 2023-2025 anonymous
 
 This file is part of PSFree.
 
@@ -16,80 +15,47 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>PSFree Lapse Exploit for 9.00 - Magnum Game</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background: linear-gradient(to bottom right, #063FAB, #01258A);
-      background-image: url('icon0.jpg');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      font-family: Arial, sans-serif;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    @font-face {
-      font-family: 'logging';
-      src: url('fonts/LiberationMono-Regular.ttf');
-    }
-
-    .card {
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(10px);
-      padding: 40px;
-      border-radius: 20px;
-      text-align: center;
-      width: 90%;
-      max-width: 700px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    }
-
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    #console {
-      font-family: 'logging', monospace;
-      font-size: 18px;
-      text-align: left;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      border-radius: 10px;
-      white-space: pre-wrap;
-      height: 300px;
-      overflow-y: auto;
-    }
-  </style>
-</head>
-<body>
-  <script>
-    if (window.applicationCache.status === 0) {
-      window.location.replace("cache.html");
-    }
-  </script>
-
-  <div class="card">
-    <h1>PSFree Lapse Exploit Firmware 9.00<br> Magnum Game - 0852 5551 9996</h1>
-    <pre id="console"></pre>
-  </div>
-
-  <script src="payload.js"></script>
-  <script type="module" src="./alert.mjs"></script>
-</body>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Lapse Exploit PS4 8.00-9.60 | Magnum Game</title>
+        <style>
+            @font-face {
+                font-family: 'logging';
+                src: url('./fonts/LiberationMono-Regular.ttf');
+            }
+            #console {
+                font-family: 'logging';
+            }
+			body {
+                background: linear-gradient(to bottom right, #063FAB, #01258A);
+                background-image: url('hack.jpg');
+                background-size: cover;
+                background-position: center;
+                color: white;
+				font-size: 20px;
+                font-family: Arial, sans-serif;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        PSFree Lapse PS4/PS5 Exploit<br>
+		Magnum Game Gorontalo<br><br>
+		PERHATIAN:<br>
+        > Jika keluar notifikasi DieError, tekan tombol PS (home), restart PS4 dan coba lagi. Kalau tekan OK pasti KP.<br>
+        > Jika keluar notifikasi memory kurang lebih dari 2x, tekan tombol PS (home), tunggu beberapa detik, dan coba kembali aktivasi HEN.<br><br>
+        <pre id='console'></pre>
+    </body>
+	<script>
+	if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
+	function load_mainmenu(){
+	var link = document.createElement('a');
+	document.body.appendChild(link);
+	link.href = '../index.html';
+	link.click();
+	}
+	</script>
+    <!-- <script src="./payload.js"></script> -->
+    <script type='module' src='./alert.mjs'></script>
 </html>
