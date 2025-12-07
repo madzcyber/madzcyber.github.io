@@ -1,0 +1,64 @@
+<html manifest="Cache.manifest">
+<head>
+<meta charset="utf-8">
+<title>AUTO XPLOIT GOLDHEN V2.3 PS4 7.55 | MAGNUM GAME</title>
+<link rel="stylesheet" href="../style.css">
+<script>
+if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
+</script>
+<script>
+function print(){}
+window.Done = function()
+{
+    if(main_ret == 0 || main_ret == 179)
+    {
+        debug_log('GoldHEN Loaded :)');
+        //read_ptr_at(0);
+    }
+    else
+        debug_log('Jailbreak failed! Reboot your PS4 and try again.');
+}
+var cachedJS = {};
+
+function runJS(path)
+{
+    if(!(path in cachedJS))
+    {
+        var xxx = new XMLHttpRequest();
+        xxx.open("GET", path, false);
+        xxx.send('');
+        cachedJS[path] = xxx.responseText;
+    }
+    eval.call(window, cachedJS[path]);
+}
+
+function runScripts()
+{
+    runJS('rop.js');
+    runJS('jb.js');
+    runJS('goldhen_2.3_755.js');
+    runJS('loader.js');
+}
+
+</script>
+
+        <script src="utils.js"></script>
+		<script src="int64.js"></script>
+		<script src="exploit.js" defer></script>
+
+</head>
+<body>
+<div class=magnum>AUTO XPLOIT GOLDHEN V2.3 7.55</div>
+<br><br><br><br><br><br><br><br>
+<h1 id=progress style='font-family:font2;font-size:30px;text-align:center;color:yellow'>Jailbreaking... Wait</h1>
+
+<div id=bottommsg class="msgs bottopmsg">
+<script type="text/javascript">
+var today = new Date()
+var year = today.getFullYear()
+document.write(year)
+</script>
+- MAGNUMZ.MY.ID
+</div>
+</body>
+</html>

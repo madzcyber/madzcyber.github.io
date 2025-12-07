@@ -1,0 +1,12 @@
+CACHE MANIFEST 
+# v2.5.7 Self-Host 
+
+../font/font1.ttf
+../font/font2.ttf
+exp_loader.js
+goldhen.bin
+index.html
+jb.js
+
+NETWORK:
+*
