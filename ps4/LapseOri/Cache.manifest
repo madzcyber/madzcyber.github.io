@@ -2,6 +2,8 @@ CACHE MANIFEST
 
 CACHE:
 ../style.css
+../font/font1.ttf
+../font/font2.ttf
 about.html
 alert.mjs
 cache.html
