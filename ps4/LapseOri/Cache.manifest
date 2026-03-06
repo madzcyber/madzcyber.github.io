@@ -1,6 +1,7 @@
 CACHE MANIFEST 
 
-CACHE: 
+CACHE:
+../style.css
 about.html
 alert.mjs
 cache.html

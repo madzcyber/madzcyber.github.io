@@ -1,6 +1,7 @@
 CACHE MANIFEST 
 
-CACHE: 
+CACHE:
+../style.css
 700.bin
 750.bin
 800.bin
