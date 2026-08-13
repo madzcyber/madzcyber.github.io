@@ -40,7 +40,7 @@ text-align: center;
 padding: 6px;
 margin: 6px;
 font-size:24px;
-font-family: font2;
+font-family: "Segoe UI", system-ui, sans-serif;
 cursor:pointer;
 }
 .btn:hover{
