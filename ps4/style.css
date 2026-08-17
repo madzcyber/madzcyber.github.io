@@ -1,5 +1,6 @@
 html {
 background: radial-gradient(circle at 50% 28%, #18233a 0, #0c111b 44%, #07090e 100%);
+background-attachment: fixed;
 color:white;
 font-size:20px;
 font-family: font2;
