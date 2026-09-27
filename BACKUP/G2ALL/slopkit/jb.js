@@ -45,7 +45,7 @@ function hostFail() {
 function hostAlready() {
   var m = document.getElementById("msgs");
   if (m) {
-    m.innerHTML = "Game siap dimainkan, tekan tombol PS di Stik untuk keluar...";
+    m.innerHTML = "Game sudah siap dimainkan, silahkan keluar";
   }
 }
 
