@@ -1,0 +1,10 @@
+CACHE MANIFEST
+# PS5 Web Portal cache version: 61e169f8a6b5
+
+CACHE:
+index.html
+cache.html
+portal.manifest
+
+NETWORK:
+*
