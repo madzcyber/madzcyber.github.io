@@ -2384,14 +2384,14 @@ function __getPatchU8(name) {
   function hostOk() {
     var m = document.getElementById("progress");
     if (m) {
-      m.innerHTML = "Berhasil, tekan tombol PS di Stik untuk keluar";
+      m.innerHTML = "GoldHEN v2.4b18.12 Loaded :)";
       m.style.color = "green";
     }
   }
   function hostFail() {
     var m = document.getElementById("progress");
     if (m) {
-      m.innerHTML = "Gagal Jailbreak! Restart PS4 kalian";
+      m.innerHTML = "Failed to Load! Restart Your Console ...";
       m.style.color = "red";
     }
   }
@@ -3042,8 +3042,8 @@ function __getPatchU8(name) {
           mark("ALREADY-ROOT", "getuid=" + uid0 + " setuid(0)=" + su0);
           var m = document.getElementById("progress");
           if (m) {
-            m.innerHTML = "Game sudah siap dimainkan, silahkan keluar";
-            m.style.color = "orange";
+            m.innerHTML = "GoldHEN is Already Loaded";
+            m.style.color = "orang";
           }
           return;
         }
