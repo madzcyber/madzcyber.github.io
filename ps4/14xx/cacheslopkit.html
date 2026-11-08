@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html manifest="slopkit.manifest">
+<head>
+<title>MAGNUM PLAYSTATION PS4 EXPLOIT</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+history.replaceState(null,null,'index.html');var histlength=history.length;history.go(-histlength);
+function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));window.msgs.innerHTML="Install Offline Cache: " + Percent + "%";}
+function DisplayCacheProgress(){window.msgs.innerHTML="Install cache berhasil ✔";setTimeout(function(){window.msgs.innerHTML="Tutup dan buka kembali halaman ini";},1500);}
+window.applicationCache.addEventListener("progress",DLProgress,false);
+window.applicationCache.oncached=function(e){DisplayCacheProgress();};
+window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+window.applicationCache.onerror=function(e){window.msgs.innerHTML="Error Install Cache! - Bersihkan dan coba kembali";};
+</script>
+<div class=magnum>MAGNUM PLAYSTATION PS4 EXPLOIT</div>
+<br><br><br><br><br><br><br><br><br>
+<h1 id=msgs style="font-family:sans-serif;font-size:30px;text-align:center;color:yellow">Proses install cache...</h1>
+<div id=bottommsg class="msgs bottopmsg">
+*Facebook : @magnumps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*WhatsApp : 085255519996&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*YouTube : @magnumps
+</div>
+</body>
+</html>
